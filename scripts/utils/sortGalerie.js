@@ -14,11 +14,12 @@ let contentPath="";
 let artistTotalLikes=0;
 let artistTarif=0;
 
-function sortingBy(_arr,_sV){
-    _arr.sort((s1, s2) => {
-        return s1._sV - s2._sV;})
-}
-
+function sortingBy(param){
+    if (param=="title"){subGalerie.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));}
+    if (param=="likes"){subGalerie.sort((a,b) => (a.likes < b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0));}
+    if (param=="date"){subGalerie.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));}
+  }
+  
 
 function setListOfAttributes(el, attrs) {
     Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
@@ -83,7 +84,7 @@ function galerieFactory(dataGal) {
     sub.forEach((medium) => {
             const mediaCard = galerieFactory(medium);
             const userCardDOM = mediaCard.getUserCardDOM();
-            galerieSection.appendChild(userCardDOM);       
+            galerieSection.appendChild(userCardDOM);
      });
     
     const stickyDiv = document.querySelector(".stickyDiv");
@@ -115,12 +116,13 @@ fetch('./data/photographers.json')
             console.log(artistNb);            
             for (let i=0; i<dataGal.media.length; i++){
                 if(dataGal.media[i].photographerId==artistNb){
-                    subGalerie.push(dataGal.media[i]);      
+                    subGalerie.push(dataGal.media[i]);
                     artistTotalLikes += dataGal.media[i].likes;
                     }    
             }
             
-            
+            //sortArray(subGalerie, subGalerie.title);
+            sortingBy('title')
             console.log(subGalerie);                  
             displayDataG(subGalerie); 
         });
