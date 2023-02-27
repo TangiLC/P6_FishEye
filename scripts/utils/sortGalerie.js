@@ -112,6 +112,11 @@ function galerieFactory(dataGal) {
                     videoSource.setAttribute( 'src', contentPath);
                     artistVideo.appendChild(videoSource);
                 }
+                
+                const dateDiv = document.createElement( 'div' );
+                dateDiv.setAttribute( 'class', 'dateDiv');
+                dateDiv.innerText=date;
+                articleGalerie.appendChild(dateDiv);
 
                 const titleDiv = document.createElement( 'div' );
                 titleDiv.setAttribute( 'class', 'titleDiv');
@@ -122,7 +127,7 @@ function galerieFactory(dataGal) {
                 mediaTitle.textContent = videoTitle+title;
                 titleDiv.appendChild(mediaTitle);
                 
-                const mediaLikes = document.createElement( 'div' );
+                const mediaLikes = document.createElement( 'button' );
                 mediaLikes.setAttribute( 'class', 'mediaLikes');
                 mediaLikes.setAttribute('tabindex','0');
                 mediaLikes.textContent = likes.toString()+'❤'; 
@@ -237,3 +242,26 @@ function openLightbox() {
     slides[slideNb-1].style.display = "block";
     console.log(slideNb);
   }
+
+
+//-------------------- ajout de likes ------------------------------------
+function addOneLike(){
+    alert('+1 like');
+}
+
+
+
+const addLikes=document.querySelectorAll('.mediaLikes');
+
+addLikes.forEach(item => {
+    item.addEventListener("click", function(){
+        addOneLike(this); 
+    });
+    item.addEventListener("keydown", function() {
+        if ( KeyboardEvent.code ==13) {addOneLike(this);}
+        return;
+    });
+})
+
+
+
