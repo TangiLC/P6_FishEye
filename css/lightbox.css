@@ -39,18 +39,17 @@
 
   }
   /* The Close Button */
-  .close {
-    color: transparent;
-    background-color: #D3573C;;
+  .closeLightbox {
+    filter:invert(50%) sepia(60%) saturate(500%) hue-rotate(329deg) brightness(80%) contrast(90%);
+    /*color: transparent;
+    background-color: #D3573C;*/
     position: absolute;
     top: 10px;
-    left: 96%;
-    font-size: 35px;
-    font-weight: bold;
+    left: 97%;
   }
   
-  .close:hover,
-  .close:focus {
+  .closeLightbox:hover,
+  .closeLightbox:focus {
     color: #999;
     text-decoration: none;
     cursor: pointer;
@@ -81,21 +80,10 @@
   
   .prev:hover,
 .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
   /* Position the "next button" to the right */
   .next {
     right: 0;
     border-radius: 3px 0 0 3px;
   }
-  
-  
-  /* Caption text */
-  .caption-container {
-    text-align: center;
-    background-color: #D3573C;;
-    padding: 2px 16px;
-    color: black;
-  }
-  
-  

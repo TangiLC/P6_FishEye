@@ -1,6 +1,9 @@
+
+
 // Open the Modal
 function openLightbox() {
     document.getElementById("lightbox-Modal").style.display = "block";
+    document.getElementsById("closeLightbox").focus({focusVisible: true});
   }
   
   // Close the Modal
@@ -8,7 +11,7 @@ function openLightbox() {
     document.getElementById("lightbox-Modal").style.display = "none";
   }
   
-  var slideNb = 0;
+  let slideNb = 0;
   showSlides(slideNb);
   
   // Next/previous controls
@@ -22,21 +25,15 @@ function openLightbox() {
   }
   
   function showSlides(n) {
-    var i;
+    
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
     if (n > slides.length) {slideNb = 1}
-    if (n < 0) {slideNb = slides.length}
-    for (i = 0; i < slides.length; i++) {
+    if (n < 1) {slideNb = slides.length}
+    for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
     slides[slideNb-1].style.display = "block";
-    dots[slideNb-1].className += " active";
-    captionText.innerHTML = dots[slideNb-1].alt;
+    
   }
 
 

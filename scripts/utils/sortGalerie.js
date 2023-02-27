@@ -11,25 +11,22 @@
 let artistFirstName="Mimi";
 let subGalerie=[];
 let contentPath="";
+let videoTitle="";
 let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
 let maxHeight=window.screen.height;
 
 
-function sortingBy(param){
-    if (param=="title"){subGalerie.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));}
-    if (param=="likes"){subGalerie.sort((a,b) => (a.likes < b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0));}
-    if (param=="date"){subGalerie.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));}
-    alert('sorting by '+param);
+
+function sortingBy(param){     /************** fonction de tri de l'array d'objet selon key ****************/
+    if (param=="likes"){subGalerie.sort((a,b) => (a[param] < b[param]) ? 1 : ((b[param] > a[param]) ? -1 : 0));}
+    else {subGalerie.sort((a,b) => (a[param] > b[param]) ? 1 : ((b[param] > a[param]) ? -1 : 0));}
+    console.log('sorting by '+param);
     eraseDisplayDataG();
     slideNb=1;
     displayDataG(subGalerie);
   }
-
-//const sortByTitle=document.getElementById("sortTitle"); sortByTitle.addEventListener("click", sortingBy('title')); 
-//const sortByDates=document.getElementById("sortDates"); sortByDates.addEventListener("click", sortingBy('date')); 
-//const sortByLikes=document.getElementById("sortLikes"); sortByLikes.addEventListener("click", sortingBy('likes')); 
 
 
 function setListOfAttributes(el, attrs) {
@@ -52,15 +49,13 @@ function lightboxFactory(dataGal){
               
         if (dataGal.hasOwnProperty('image')){
             const artistImg = document.createElement( 'img' );
-            artistImg.setAttribute( 'src', contentPath);  
-            artistImg.setAttribute("label", `${title}`);
-            artistImg.setAttribute( 'class', 'lightbox-img');  
-            artistImg.setAttribute( 'height', maxHeight*.76);  
+            let attributes ={src:contentPath, label:title, class:'lightbox-img', height:maxHeight*.76};
+            setListOfAttributes(artistImg, attributes);
             lightboxArticle.appendChild(artistImg);  
         }
         else if (dataGal.hasOwnProperty('video')){
             const artistVideo = document.createElement( 'video' );
-            let attributes ={width :'95%', height :'auto', controls:'true', muted:'true', label:`${title}`, class:'lightbox-img'};
+            let attributes ={width :'95%', height :'auto', controls:'True', muted:'true', label:title, class:'lightbox-img'};
             setListOfAttributes(artistVideo, attributes);
             lightboxArticle.appendChild(artistVideo);
             const videoSource = document.createElement( 'source' );
@@ -95,19 +90,23 @@ function galerieFactory(dataGal) {
                 const articleGalerie = document.createElement( 'article' );   
                 articleGalerie.setAttribute("class", "content_card");
                 articleGalerie.setAttribute("aria-label", `galerie de ${artistFirstName}`);
-                      
+                                      
                 if (dataGal.hasOwnProperty('image')){
+                    videoTitle="";
                     const artistImg = document.createElement( 'img' );
-                    artistImg.setAttribute( 'src', contentPath);  
-                    artistImg.setAttribute("label", `${title}`);
+                    let attributes ={src: contentPath, label:title, tabindex:'0' }
+                    setListOfAttributes(artistImg, attributes);
                     artistImg.setAttribute("onclick",`openLightbox();currentSlide(${slideNb})`);
+                    artistImg.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                     articleGalerie.appendChild(artistImg);  
                 }
                 else if (dataGal.hasOwnProperty('video')){
+                    videoTitle="► ";
                     const artistVideo = document.createElement( 'video' );
-                    let attributes ={width :'350px', height :'300px', controls:'false', muted:'true', label:`${title}`};
+                    let attributes ={width :'350px', height :'300px', muted:'true', label:`${title}`, tabindex:'0'};
                     setListOfAttributes(artistVideo, attributes);
                     artistVideo.setAttribute("onclick",`openLightbox();currentSlide(${slideNb})`);
+                    artistVideo.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                     articleGalerie.appendChild(artistVideo);
                     const videoSource = document.createElement( 'source' );
                     videoSource.setAttribute( 'src', contentPath);
@@ -120,11 +119,12 @@ function galerieFactory(dataGal) {
 
                 const mediaTitle = document.createElement( 'div' );
                 mediaTitle.setAttribute( 'class', 'media-title');
-                mediaTitle.textContent = title;
+                mediaTitle.textContent = videoTitle+title;
                 titleDiv.appendChild(mediaTitle);
                 
                 const mediaLikes = document.createElement( 'div' );
-                mediaLikes.setAttribute( 'class', 'likes');
+                mediaLikes.setAttribute( 'class', 'mediaLikes');
+                mediaLikes.setAttribute('tabindex','0');
                 mediaLikes.textContent = likes.toString()+'❤'; 
                 titleDiv.appendChild(mediaLikes);
         
@@ -203,16 +203,18 @@ fetch('./data/photographers.json')
 
 //--------------------------lightbox------------------------
 // Open the Modal
+const closeLb=document.getElementById("closeLightbox");
 function openLightbox() {
     document.getElementById("lightbox-Modal").style.display = "block";
+    closeLb.focus({focusVisible: true});
   }
   
   // Close the Modal
   function closeLightbox() {
     document.getElementById("lightbox-Modal").style.display = "none";
   }
-  
-  showSlides(slideNb);
+  slideNb = 1;
+  //showSlides(slideNb);
   
   // Next/previous controls
   function plusSlides(n) {
@@ -225,21 +227,13 @@ function openLightbox() {
   }
   
   function showSlides(n) {
-    var i;
+    
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
     if (n > slides.length) {slideNb = 1}
-    if (n < 0) {slideNb = slides.length}
-    for (i = 0; i < slides.length; i++) {
+    if (n < 1) {slideNb = slides.length}
+    for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
     slides[slideNb-1].style.display = "block";
-    dots[slideNb-1].className += " active";
-    captionText.innerHTML = dots[slideNb-1].alt;
+    console.log(slideNb);
   }
-
-

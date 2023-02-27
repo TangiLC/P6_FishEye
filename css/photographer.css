@@ -13,6 +13,21 @@ main {
     margin: auto;
 }
 
+.mediaLikes{
+    width:4rem;
+    text-align: right;
+    border:1px solid red;
+}
+
+.media-title{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-align:left;
+    border:1px solid purple;
+    text-overflow: ellipsis;
+    width:250px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     padding:40px;
