@@ -2,6 +2,7 @@
 const main = document.getElementById("main")
 const header = document.getElementById("header")
 const modal = document.getElementById("contact_modal");
+const stickyDiv = document.getElementsById("stickyDiv");
 const toHide =document.querySelectorAll(".toHide")   
 const success =document.querySelectorAll(".formSuccessMessage")
 const modalBtn = document.querySelectorAll(".contact_button")
@@ -15,11 +16,13 @@ const formSuccessMsg= document.getElementById("formSuccessMessage");
 function displayModal() {
 	modal.style.display = "block";
     main.style.opacity = '.2';
+    stickyDiv.style.opacity = '0';
     header.style.opacity = '.2';
 }
 function closeModal() {
     modal.style.display = "none";
     main.style.opacity = '1';
+    stickyDiv.style.opacity = '1';
     header.style.opacity = '1';
 }
 function resetThenCloseModal(){

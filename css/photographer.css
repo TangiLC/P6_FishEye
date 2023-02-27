@@ -157,6 +157,7 @@ form textArea {
 }
 .stickyDiv {
     display: flex;
+    visibility:visible;
     flex-direction: row;
     width: fit-content;
     gap: 100px;
@@ -164,8 +165,8 @@ form textArea {
     color: black;
     position: sticky;
     position: -webkit-sticky;
-    left: 1300px;
-    bottom: 0;
+    left: 99.8%;
+    bottom: .2%;
     background: #DB8876;
     font-size: 140%;
     border-radius: 5px;
