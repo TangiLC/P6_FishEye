@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" >
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" >
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" >
     <meta charset="utf-8">
-    <meta lang="fr">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -22,7 +21,7 @@
     <main id="main">
       <div class="photograph-header">
         
-        <!---------------création dynamique de contenu dans cette div par photographer.js ---------------->
+        <!--******    création dynamique de contenu dans cette div par photographer.js *********-->
       </div>
      
       <div class="sort-selection">
@@ -45,7 +44,7 @@
       
       </div>
       <div class="galerie-section">
-        <!---------------création dynamique de contenu dans cette div par sortGalerie.js ---------------->
+        <!--******    création dynamique de contenu dans cette div par sortGalerie.js   ********-->
       </div>
           
       <div class="stickyDiv" id="stickyDiv"></div>  
@@ -54,7 +53,7 @@
 
 
 
-    <!---------- Modal Formulaire ----------------------->
+    <!--******************************     Modal Formulaire       ******************************-->
     <div id="contact_modal">
       <div class="modal">
 				<header>
@@ -64,46 +63,42 @@
           onkeydown="if(event.keyCode == 13){event.target.click()}">
         </header>
         
-				<form id="form" name="contact" role="formulaire de contact"> <!--action & method-->
+				<form id="form" name="contact" aria-label="formulaire de contact"> <!--action & method-->
           <p class="contactMe"><!--photographer name here--></p>
 					<div class="formData" data-validation-type="name"
-           data-error ="Prénom trop court (2 caractères) ou caractères invalides."
-           aria-errormessage="Prénom trop court (2 caractères) ou caractères invalides.">
+           data-error ="Prénom trop court (2 caractères) ou caractères invalides.">
 						<label for="first">Prénom</label>
 						<input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15" aria-label="prénom">
 					</div>
 
           <div class="formData" data-validation-type="name"
-           data-error ="Nom trop court (2 caractères) ou caractères invalides."
-           aria-errormessage="Nom trop court (2 caractères) ou caractères invalides.">
+           data-error ="Nom trop court (2 caractères) ou caractères invalides.">
 						<label for="last">Nom</label>
 						<input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40" aria-label="nom">
 					</div>
 
           <div class="formData" data-validation-type="email"
-           data-error ="Veuillez entrer une adresse email valide."
-           aria-errormessage="Veuillez entrer une adresse email valide.">
+           data-error ="Veuillez entrer une adresse email valide.">
 						<label for="email">Email</label>
 						<input class="text-control lowCase" type="email" id="email" name="email" aria-label="email">
 					</div>
 
           <div class="formData" data-validation-type="message"
-           data-error ="Message trop court (10 caractères) ou symboles invalides"
-           aria-errormessage="Veuillez entrer un message de plus de 10 caractères sans symboles spéciaux.">
+           data-error ="Message trop court (10 caractères) ou symboles invalides">
 						<label for="message">Votre message</label>
-						<input class="text-control textArea" type="textarea" row="4" cols="50" id="message" name="message" 
-              overflow="auto" minlength="10" aria-label="message" placeholder="Votre message ici...">
+						<input class="text-control textArea" type="text" id="message" name="message" 
+              minlength="10" aria-label="message" placeholder="Votre message ici...">
 					</div>
 
           <button class="contact_button" aria-label="envoi du formulaire">Envoyer</button>
           <p class="formSuccessMessage" id="formSuccessMessage">Thanks, Dude</p>
-          <input class="btn-close" type="reset" id="btn-close" aria-label="fermer" value="Fermer" onclick="resetThenCloseModal()">
+          <input class="btn-close" type="reset" id="btn-close" value="Fermer" alt="Fermer" onclick="resetThenCloseModal()">
 				</form>
       </div>
 		</div>
 
 
-    <!-------------- Modal/Lightbox ------------------------------------>
+    <!--*******************************     Modal/Lightbox         *****************************-->
 <div id="lightbox-Modal" class="lightbox-Modal">
   <img src="assets/icons/close.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail" id="closeLightbox"
       onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" alt="fermeture"  class="closeLightbox">
@@ -111,10 +106,9 @@
 
     </div>
 
-    <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)" tabindex="0" arial-label="photo précédente"
+    <a class="prev" onclick="plusSlides(-1)" tabindex="0" 
         onkeydown="if(event.keyCode == 13){event.target.click()}">◄</a>
-    <a class="next" onclick="plusSlides(1)" tabindex="0" arial-label="photo suivante"
+    <a class="next" onclick="plusSlides(1)" tabindex="0" 
         onkeydown="if(event.keyCode == 13){event.target.click()}">►</a>
 
 </div>
