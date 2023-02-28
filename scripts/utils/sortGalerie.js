@@ -61,7 +61,7 @@ function lightboxFactory(dataGal){
         if (dataGal.hasOwnProperty('image')){
             contentPath = `./assets/photographers/${artistFirstName}/${image}`;
             const artistImg = document.createElement( 'img' );
-            let attributes ={src:contentPath, label:title, class:'lightbox-img', height:maxHeight*.76};
+            let attributes ={src:contentPath, alt:title, class:'lightbox-img', height:maxHeight*.76};
             setListOfAttributes(artistImg, attributes);
             lightboxArticle.appendChild(artistImg);  
         }
@@ -101,7 +101,7 @@ function galerieFactory(dataGal) {
                     contentPath = `./assets/photographers/${artistFirstName}/${image}`;
                     videoTitle="";
                     const artistImg = document.createElement( 'img' );
-                    let attributes ={src: contentPath, label:title, tabindex:'0',
+                    let attributes ={src: contentPath, alt:title, tabindex:'0',
                         onclick:`openLightbox();currentSlide(${slideNb})`, onkeydown:"if(event.keyCode == 13){event.target.click()}"};
                     setListOfAttributes(artistImg, attributes);
                     articleGalerie.appendChild(artistImg);  
@@ -202,82 +202,5 @@ fetch('./data/photographers.json')
 
 
 
-//--------------------------lightbox------------------------
-// Open the Modal
-const closeLb=document.getElementById("closeLightbox");
-function openLightbox() {
-    document.getElementById("lightbox-Modal").style.display = "block";
-    closeLb.focus({focusVisible: true});
-  }
-  
-  // Close the Modal
-  function closeLightbox() {
-    document.getElementById("lightbox-Modal").style.display = "none";
-  }
-  slideNb = 1;
-  //showSlides(slideNb);
-  
-  // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideNb += n);
-  }
-  
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideNb = n);
-  }
-  
-  function showSlides(n) {
-    
-    var slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) {slideNb = 1}
-    if (n < 1) {slideNb = slides.length}
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slides[slideNb-1].style.display = "block";
-    console.log(slideNb);
-  }
-
-
-//-------------------- ajout de likes ------------------------------------
-function addOneLike(arg){
-    
-    for (let i=0;i<subGalerie.length;i++){
-        if (subGalerie[i].id==arg){
-            subGalerie[i].likes+=1;
-            console.log('+1 like /'+(subGalerie[i].likes-1)+artistTotalLikes);
-        }
-    }
-    artistTotalLikes +=1;
-    stickyMessage();
-    eraseDisplayDataG();
-    slideNb=1;
-    displayDataG(subGalerie);
-    
-}
-
-//-----------------------dropdown menu sort---------------------------------
-
-const dropBtn=document.querySelector('.dropbtn');
-const dropDown=document.querySelector('.dropdown-content');
-function dropDownClose(){
-    console.log('close');
-    dropDown.style.display="none";
-    dropBtn.style.display="block";
-}
-function dropDownOpen(){
-    console.log('open');
-    dropBtn.style.display="none";
-    dropDown.style.display="block";
-    dropDown.focus();
-}
-dropBtn.focus();
-dropBtn.addEventListener("onmouseover", dropDownOpen());
-dropBtn.addEventListener("keydown", function() {
-    if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});   /*enter=13  down=40*/
-dropDown.addEventListener("blur",setTimeout(dropDownClose(),1000));
-dropDown.addEventListener("keydown", function() {
-    if ( KeyboardEvent.code ==27 || KeyboardEvent.code==38 ) {dropDownOpen();}});   /* esc=27  up=38*/
 
 

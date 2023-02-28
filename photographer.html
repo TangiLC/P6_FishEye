@@ -60,12 +60,12 @@
 				<header>
           <h2>Contactez-moi</h2>
           
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" label="close" tabindex="0"
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" alt="close" tabindex="0"
           onkeydown="if(event.keyCode == 13){event.target.click()}">
         </header>
         
 				<form id="form" name="contact" role="formulaire de contact"> <!--action & method-->
-          <p class="contactMe">><!--photographer name here--></p>
+          <p class="contactMe"><!--photographer name here--></p>
 					<div class="formData" data-validation-type="name"
            data-error ="Prénom trop court (2 caractères) ou caractères invalides."
            aria-errormessage="Prénom trop court (2 caractères) ou caractères invalides.">
@@ -106,7 +106,7 @@
     <!-------------- Modal/Lightbox ------------------------------------>
 <div id="lightbox-Modal" class="lightbox-Modal">
   <img src="assets/icons/close.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail" id="closeLightbox"
-      onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" label="fermeture"  class="closeLightbox">
+      onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" alt="fermeture"  class="closeLightbox">
   <div class="lightbox-content">
 
     </div>
@@ -123,6 +123,8 @@
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/utils/sortGalerie.js"></script>
-  
+    <script src="./scripts/utils/lightbox.js"></script>
+    <script src="./scripts/utils/addLikes.js"></script>
+    <script src="./scripts/utils/dropdown.js"></script>
   </body>
 </html>
