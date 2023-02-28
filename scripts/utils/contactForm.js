@@ -14,12 +14,13 @@ const formSuccessMsg= document.getElementById("formSuccessMessage");
 
 function displayModal() {
 	  modal.style.display = "block";
-    main.style.opacity = '.2';
+    main.style.display = "none";
     header.style.opacity = '.2';
+    closeBtn.focus();
 }
 function closeModal() {
     modal.style.display = "none";
-    main.style.opacity = '1';
+    main.style.display = "block";
     header.style.opacity = '1';
 }
 function resetThenCloseModal(){
@@ -63,7 +64,7 @@ formDataToValidate.forEach((elem) => {
         value: e.target.value,
         elem,
       })
-      elem.setAttribute("data-error-visible", !isValid)
+      elem.setAttribute("data-error-visible", !isValid);
 
     })
   })
@@ -76,7 +77,8 @@ function validateWholeForm() {
       const isValid = validate[elem.getAttribute("data-validation-type")]({
         value: input.value, elem,
       })
-      elem.setAttribute("data-error-visible", !isValid)
+      elem.setAttribute("data-error-visible", !isValid);
+      
     })
   })
 
@@ -85,7 +87,8 @@ function validateWholeForm() {
       elem.getAttribute("data-error-visible") === "false" ||
       !elem.hasAttribute("data-error-visible")
   )
-  return isFormValid
+  
+  return isFormValid;
 }
 
 
