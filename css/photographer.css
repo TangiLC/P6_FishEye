@@ -308,58 +308,65 @@ form .textArea {
   
 .dropdown {
     position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top:-60px;
-    background-color: #901C1C;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    border-bottom:1px solid #901D1D;
-    z-index: 1;
-}
-  
-.dropdown-content li {
-    color: white;
+    display: inline-flex;
+    flex-direction:column;
+    top:-40px;
     font-size: 110%;
     font-weight: 600;
-    margin-left: -30px;
-    margin-right: 12px;
+    color: white;
+    background-color: #901C1C;
+    min-width: 160px;
+    border-radius: 5px;
+    margin-left:10px;
+    margin-right:10px;
+    padding: 5px;
+    z-index: 1;
+}
+
+.firstLine{
+    display: flex;
+    flex-direction:row;
     padding:10px;
-    text-decoration: none;
+}
+
+.dropVisible {
     display: block;
-    border-bottom: 1px solid white;
-    
-  }
+    text-decoration: none;
+    padding:10px;
+}
+
+.dropVisible1, .dropVisible2 {
+    display: none;
+    text-decoration: none;
+    border-top: 1px solid white;
+    padding:10px;
+}
+
+.dropOpen{
+    display:block;
+    padding-left:20px;
+}
+.dropClose{
+    display:none;
+    padding-left:20px;
+}
   
-.dropdown-content li:hover ,li:focus{
+.dropOpen:hover, .dropOpen:focus, .dropClose:hover, .dropClose:focus,
+.dropVisible:hover, .dropVisible:focus, .dropVisible1:hover, .dropVisible1:focus,
+.dropVisible2:hover, .dropVisible2:focus {
     background-color: #DB8876;
     color : black;
 }
-
-.dropdown-content:not(:focus){
-    display:none;
-}
-/*.dropdown:hover .dropdown-content {display: block;}
-.dropdown:focus .dropdown-content {display: block;}
-  
-.dropdown:hover .dropbtn {background-color: #DB8876;} 
-.dropdown:focus .dropbtn {background-color: #DB8876;} */
 
 .sort-selection {
     display: inline;
     font-size: 140%;
     font-weight: 600;
     color: black;
-    padding: 11px;
+    padding: 15px;
     min-width: 180px;
     height: 70px;
     border: none;
-    cursor: pointer;
     padding-left:40px;
 }
 /*-------------éléments de l'affichage galerie------------------*/
@@ -369,7 +376,7 @@ form .textArea {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .galerie-section article {

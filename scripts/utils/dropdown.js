@@ -1,22 +1,38 @@
 //-----------------------dropdown menu sort---------------------------------
 
-const dropBtn=document.querySelector('.dropbtn');
-const dropDown=document.querySelector('.dropdown-content');
+
+
+const dropOpen=document.querySelector('.dropOpen');
+const dropClose=document.querySelector('.dropClose');
+const dropFocus=document.querySelector('.firstLine');
+const dropVisible1=document.querySelector('.dropVisible1');
+const dropVisible2=document.querySelector('.dropVisible2');
+const dropTotal=document.querySelector('.dropdown');
 function dropDownClose(){
     console.log('close');
-    dropDown.style.display="none";
-    dropBtn.style.display="block";
+    dropVisible1.style.display="none";
+    dropVisible2.style.display="none";
+    dropOpen.style.display="block";
+    dropClose.style.display="none";
 }
 function dropDownOpen(){
     console.log('open');
-    dropBtn.style.display="none";
-    dropDown.style.display="block";
-    dropDown.focus();
+    dropVisible1.style.display="block";
+    dropVisible2.style.display="block";
+    dropOpen.style.display="none";
+    dropClose.style.display="block";
+    dropFocus.focus();
 }
-dropBtn.focus();
-dropBtn.addEventListener("onmouseover", dropDownOpen());
-dropBtn.addEventListener("keydown", function() {
+dropOpen.focus();
+['onmouseover', 'click'].forEach(function(event) { dropOpen.addEventListener(event, dropDownOpen());});
+//dropOpen.addEventListener("onmouseover", dropDownOpen());
+//dropOpen.addEventListener("click", dropDownOpen());
+dropOpen.addEventListener("keydown", function() {
     if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});   /*enter=13  down=40*/
-dropBtn.addEventListener("onmouseout",setTimeout(dropDownClose(),1000));
-dropBtn.addEventListener("keydown", function() {
+dropClose.addEventListener("onmouseover", dropDownClose());
+dropClose.addEventListener("click", dropDownClose());
+dropClose.addEventListener("keydown", function() {
+        if ( KeyboardEvent.code ==13 || KeyboardEvent.code==38 ) {dropDownClose();}});   /*enter=13  up=38*/
+dropTotal.addEventListener("onmouseout",setTimeout(dropDownClose(),1000));
+dropTotal.addEventListener("keydown", function() {
     if ( KeyboardEvent.code ==27 || KeyboardEvent.code==38 ) {dropDownOpen();}});   /* esc=27  up=38*/

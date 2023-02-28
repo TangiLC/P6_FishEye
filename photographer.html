@@ -21,7 +21,7 @@
     <main id="main">
       <div class="photograph-header">
         
-        <!--******    création dynamique de contenu dans cette div par photographer.js *********-->
+        <!--******    création dynamique de contenu dans cette div par photographer.js ▲*********-->
       </div>
      
       <div class="sort-selection">
@@ -29,16 +29,18 @@
         <span>Trier par &nbsp;</span>
         
         <div class="dropdown">
-            <button class="dropbtn" id="dropbtn" onclick="dropDownOpen()"
-                onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité&nbsp;&nbsp;▼</button>
-            <ul class="dropdown-content">
-              <li id='sortLikes' tabindex="0" onclick="sortingBy('likes')" 
-                  onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité&nbsp;&nbsp;▲</li>
-              <li id='sortDates' tabindex="0" onclick="sortingBy('date') "
-                  onkeydown="if(event.keyCode == 13){event.target.click()}">Date</li>
-              <li id='sortTitle' tabindex="0" onclick="sortingBy('title') "
-                  onkeydown="if(event.keyCode == 13){event.target.click()}">Title</li>
-            </ul>
+          <div class="firstLine">
+            <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')" 
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité&nbsp;</div>
+            <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()"
+                onkeydown="if(event.keyCode == 13){event.target.click()}">▼</div>
+            <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()"
+                onkeydown="if(event.keyCode == 13){event.target.click()}">▲</div>    
+          </div>              
+              <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date') "
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Date</div>
+              <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title') "
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Title</div>
         </div> 
           
       
