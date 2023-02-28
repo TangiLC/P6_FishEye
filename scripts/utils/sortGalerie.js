@@ -18,7 +18,7 @@ let slideNb=1;
 let maxHeight=window.screen.height;
 const stickyDiv = document.querySelector(".stickyDiv");
 
-function stickyMessage(){    //affichage du message sticky nombre de likes et tarif
+function stickyMessage(){    //****** affichage du message sticky nombre de likes et tarif ********/
    
     stickyDiv.innerHTML="";
     const artistLikes =document.createElement('div');
@@ -30,7 +30,7 @@ function stickyMessage(){    //affichage du message sticky nombre de likes et ta
 }
 
 
-function sortingBy(param){     /************** fonction de tri de l'array d'objet selon key ****************/
+function sortingBy(param){     //***** */ fonction de tri de l'array d'objet selon key ****************/
     if (param=="likes"){subGalerie.sort((a,b) => (a[param] < b[param]) ? 1 : ((b[param] > a[param]) ? -1 : 0));}
     else {subGalerie.sort((a,b) => (a[param] > b[param]) ? 1 : ((b[param] > a[param]) ? -1 : 0));}
     console.log('sorting by '+param);
@@ -44,34 +44,35 @@ function setListOfAttributes(el, attrs) {
     Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
 }
 
+function createDiv(elementName, elementAttribute, elementAttributeKey, elementInnerText, parentTarget){
+    elementName.setAttribute(elementAttribute, elementAttributeKey);
+    elementName.innerText=elementInnerText;
+    parentTarget.appendChild(elementName);
+}
+
 function lightboxFactory(dataGal){
     const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
-    if (dataGal.hasOwnProperty('image')){
-        contentPath = `./assets/photographers/${artistFirstName}/${image}`
-    }
-    else if (dataGal.hasOwnProperty('video')){
-        contentPath = `./assets/photographers/${artistFirstName}/${video}`
-    }
-    else {contentPath ="blank"}
+    
     function getUserCardDOM() {
-        const lightboxArticle = document.createElement( 'div' );   
-        lightboxArticle.setAttribute("class", "mySlides");        
-        lightboxArticle.setAttribute("aria-label", `galerie de ${artistFirstName}`);
-              
+        const lightboxArticle = document.createElement( 'div' ); 
+        let attrib={class:'mySlides', 'aria-label':`galerie de ${artistFirstName}`};  
+        setListOfAttributes(lightboxArticle, attrib);  
+        
         if (dataGal.hasOwnProperty('image')){
+            contentPath = `./assets/photographers/${artistFirstName}/${image}`;
             const artistImg = document.createElement( 'img' );
             let attributes ={src:contentPath, label:title, class:'lightbox-img', height:maxHeight*.76};
             setListOfAttributes(artistImg, attributes);
             lightboxArticle.appendChild(artistImg);  
         }
         else if (dataGal.hasOwnProperty('video')){
+            contentPath = `./assets/photographers/${artistFirstName}/${video}`;
             const artistVideo = document.createElement( 'video' );
             let attributes ={width :'95%', height :'auto', controls:'True', muted:'true', label:title, class:'lightbox-img'};
             setListOfAttributes(artistVideo, attributes);
             lightboxArticle.appendChild(artistVideo);
             const videoSource = document.createElement( 'source' );
-            videoSource.setAttribute( 'src', contentPath);
-            artistVideo.appendChild(videoSource);
+            createDiv(videoSource, 'src', contentPath, '', artistVideo);
         }
 
         const titleDiv = document.createElement( 'div' );
@@ -88,63 +89,50 @@ function lightboxFactory(dataGal){
 
 function galerieFactory(dataGal) {
     const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
-    if (dataGal.hasOwnProperty('image')){
-        contentPath = `./assets/photographers/${artistFirstName}/${image}`
-    }
-    else if (dataGal.hasOwnProperty('video')){
-        contentPath = `./assets/photographers/${artistFirstName}/${video}`
-    }
-    else {contentPath ="blank"}
+   
                 
               
             function getUserCardDOM() {
-                const articleGalerie = document.createElement( 'article' );   
-                articleGalerie.setAttribute("class", "content_card");
-                articleGalerie.setAttribute("aria-label", `galerie de ${artistFirstName}`);
+                const articleGalerie = document.createElement( 'article' ); 
+                let attrib={class:'content_card', 'aria-label':`galerie de ${artistFirstName}`};  
+                setListOfAttributes(articleGalerie, attrib);
                                       
                 if (dataGal.hasOwnProperty('image')){
+                    contentPath = `./assets/photographers/${artistFirstName}/${image}`;
                     videoTitle="";
                     const artistImg = document.createElement( 'img' );
-                    let attributes ={src: contentPath, label:title, tabindex:'0' }
+                    let attributes ={src: contentPath, label:title, tabindex:'0',
+                        onclick:`openLightbox();currentSlide(${slideNb})`, onkeydown:"if(event.keyCode == 13){event.target.click()}"};
                     setListOfAttributes(artistImg, attributes);
-                    artistImg.setAttribute("onclick",`openLightbox();currentSlide(${slideNb})`);
-                    artistImg.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                     articleGalerie.appendChild(artistImg);  
                 }
                 else if (dataGal.hasOwnProperty('video')){
+                    contentPath = `./assets/photographers/${artistFirstName}/${video}`;
                     videoTitle="► ";
                     const artistVideo = document.createElement( 'video' );
-                    let attributes ={width :'350px', height :'300px', muted:'true', label:`${title}`, tabindex:'0'};
+                    let attributes ={width :'350px', height :'300px', muted:'true', label:title, tabindex:'0', 
+                        onclick:`openLightbox();currentSlide(${slideNb})`, onkeydown:"if(event.keyCode == 13){event.target.click()}"};
                     setListOfAttributes(artistVideo, attributes);
-                    artistVideo.setAttribute("onclick",`openLightbox();currentSlide(${slideNb})`);
-                    artistVideo.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                     articleGalerie.appendChild(artistVideo);
                     const videoSource = document.createElement( 'source' );
-                    videoSource.setAttribute( 'src', contentPath);
-                    artistVideo.appendChild(videoSource);
+                    createDiv(videoSource, 'src', contentPath, '', artistVideo);
                 }
                 
-                const dateDiv = document.createElement( 'div' );
-                dateDiv.setAttribute( 'class', 'dateDiv');
-                dateDiv.innerText=date;
-                articleGalerie.appendChild(dateDiv);
-
+                const dateDiv= document.createElement( 'div' );
+                createDiv(dateDiv, 'class', 'dateDiv', date, articleGalerie);
+            
                 const titleDiv = document.createElement( 'div' );
-                titleDiv.setAttribute( 'class', 'titleDiv');
-                articleGalerie.appendChild(titleDiv);
-
+                createDiv(titleDiv, 'class', 'titleDiv', '', articleGalerie);
+                
                 const mediaTitle = document.createElement( 'div' );
-                mediaTitle.setAttribute( 'class', 'media-title');
-                mediaTitle.textContent = videoTitle+title;
-                titleDiv.appendChild(mediaTitle);
+                createDiv(mediaTitle, 'class', 'media-title', videoTitle+title, titleDiv);
+            
                 
                 const mediaLikes = document.createElement( 'button' );
-                mediaLikes.setAttribute( 'class', 'mediaLikes');
-                mediaLikes.setAttribute('tabindex','0');
-                mediaLikes.setAttribute('onclick', `addOneLike(${id})`);
-                mediaLikes.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
-                mediaLikes.textContent = likes.toString()+'❤'; 
-                titleDiv.appendChild(mediaLikes);
+                let attributes = {tabindex:'0',onclick:`addOneLike(${id})`, onkeydown:"if(event.keyCode == 13){event.target.click()}"};
+                setListOfAttributes(mediaLikes, attributes);
+                createDiv(mediaLikes, 'class', 'mediaLikes', likes.toString()+'❤', titleDiv);
+                
         
                 return (articleGalerie);
             }
@@ -258,7 +246,7 @@ function addOneLike(arg){
     for (let i=0;i<subGalerie.length;i++){
         if (subGalerie[i].id==arg){
             subGalerie[i].likes+=1;
-            alert('+1 like /'+(subGalerie[i].likes-1));
+            console.log('+1 like /'+(subGalerie[i].likes-1)+artistTotalLikes);
         }
     }
     artistTotalLikes +=1;
