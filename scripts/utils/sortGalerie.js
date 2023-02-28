@@ -130,6 +130,8 @@ function galerieFactory(dataGal) {
                 const mediaLikes = document.createElement( 'button' );
                 mediaLikes.setAttribute( 'class', 'mediaLikes');
                 mediaLikes.setAttribute('tabindex','0');
+                mediaLikes.setAttribute('onclick','addOneLike()');
+                mediaLikes.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                 mediaLikes.textContent = likes.toString()+'❤'; 
                 titleDiv.appendChild(mediaLikes);
         
@@ -246,22 +248,33 @@ function openLightbox() {
 
 //-------------------- ajout de likes ------------------------------------
 function addOneLike(){
-    alert('+1 like');
+    let previousLikes =this.textContent;
+    alert('+1 like /'+previousLikes);
+    this.textContent = (1+previousLikes).toString()+'❤'; 
 }
 
 
 
-const addLikes=document.querySelectorAll('.mediaLikes');
 
-addLikes.forEach(item => {
-    item.addEventListener("click", function(){
-        addOneLike(this); 
-    });
-    item.addEventListener("keydown", function() {
-        if ( KeyboardEvent.code ==13) {addOneLike(this);}
-        return;
-    });
-})
+//-----------------------dropdown menu sort---------------------------------
 
+const dropBtn=document.querySelector('.dropbtn');
+const dropDown=document.querySelector('.dropdown-content');
+function dropDownClose(){
+    console.log('close');
+    dropDown.style.display="none";
+    dropBtn.style.display="block";
+}
+function dropDownOpen(){
+    console.log('open');
+    dropBtn.style.display="none";
+    dropDown.style.display="block";
+    dropDown.focus();
+    //setTimeout(dropDown.addEventListener("blur",dropDownClose()),2000);
+}
+dropBtn.focus();
+dropBtn.addEventListener("click", dropDownOpen());
+dropBtn.addEventListener("keydown", function() {
+    if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});
 
 

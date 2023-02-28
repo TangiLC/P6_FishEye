@@ -30,11 +30,14 @@
         <span>Trier par &nbsp;</span>
         
         <div class="dropdown">
-            <button class="dropbtn">Popularité&nbsp;&nbsp;▼</button>
+            <button class="dropbtn" id="dropbtn">Popularité&nbsp;&nbsp;▼</button>
             <ul class="dropdown-content">
-              <li id='sortLikes' onclick="sortingBy('likes')">Popularité&nbsp;&nbsp;▲</li>
-              <li id='sortDates' onclick="sortingBy('date')">Date</li>
-              <li id='sortTitle' onclick="sortingBy('title')">Title</li>
+              <li id='sortLikes' tabindex="0" onclick="sortingBy('likes')" 
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité&nbsp;&nbsp;▲</li>
+              <li id='sortDates' tabindex="0" onclick="sortingBy('date') "
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Date</li>
+              <li id='sortTitle' tabindex="0" onclick="sortingBy('title') "
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Title</li>
             </ul>
         </div> 
           
