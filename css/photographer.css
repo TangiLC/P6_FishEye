@@ -297,6 +297,7 @@ form .textArea {
 /*-------------éléments du formulaire tri------------------*/
 
 .dropbtn {
+    display:block;
     background-color: #901C1C;
     font-size: 120%;
     font-weight: 600;
