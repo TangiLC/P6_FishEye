@@ -12,6 +12,7 @@ let artistFirstName="Mimi";
 let subGalerie=[];
 let contentPath="";
 let videoTitle="";
+let textDate="";
 let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
@@ -68,7 +69,7 @@ function lightboxFactory(dataGal){
         else if (dataGal.hasOwnProperty('video')){
             contentPath = `./assets/photographers/${artistFirstName}/${video}`;
             const artistVideo = document.createElement( 'video' );
-            let attributes ={width :'95%', height :'auto', controls:'True', muted:'true', label:title, class:'lightbox-img'};
+            let attributes ={width :'95%', height :'auto', tabindex:'0', controls:'True', muted:'true', label:title, class:'lightbox-img'};
             setListOfAttributes(artistVideo, attributes);
             lightboxArticle.appendChild(artistVideo);
             const videoSource = document.createElement( 'source' );
@@ -117,9 +118,10 @@ function galerieFactory(dataGal) {
                     const videoSource = document.createElement( 'source' );
                     createDiv(videoSource, 'src', contentPath, '', artistVideo);
                 }
-                
+                if (dataGal.hasOwnProperty('video')){textDate=date+' V I D É O ►'}
+                else {textDate=date}
                 const dateDiv= document.createElement( 'div' );
-                createDiv(dateDiv, 'class', 'dateDiv', date, articleGalerie);
+                createDiv(dateDiv, 'class', 'dateDiv', textDate, articleGalerie);
             
                 const titleDiv = document.createElement( 'div' );
                 createDiv(titleDiv, 'class', 'titleDiv', '', articleGalerie);

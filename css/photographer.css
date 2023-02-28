@@ -18,7 +18,8 @@ main {
     color: black;
     font-size: 65%;
     position: relative;
-    top: -85%;
+    width:60px;
+    top: -2%;
     left: 40%;
     background-color: lightgray;
 }
@@ -310,7 +311,7 @@ form .textArea {
     position: relative;
     display: inline-flex;
     flex-direction:column;
-    top:-40px;
+    top:-2px;
     font-size: 110%;
     font-weight: 600;
     color: white;
@@ -326,7 +327,6 @@ form .textArea {
 .firstLine{
     display: flex;
     flex-direction:row;
-    padding:10px;
 }
 
 .dropVisible {
@@ -344,11 +344,11 @@ form .textArea {
 
 .dropOpen{
     display:block;
-    padding-left:20px;
+    padding-left:30px; padding-right:10px; padding-top:12px;
 }
 .dropClose{
     display:none;
-    padding-left:20px;
+    padding-left:30px; padding-right:10px; padding-top:8px;
 }
   
 .dropOpen:hover, .dropOpen:focus, .dropClose:hover, .dropClose:focus,
@@ -376,7 +376,7 @@ form .textArea {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .galerie-section article {
