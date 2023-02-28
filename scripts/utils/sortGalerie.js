@@ -130,7 +130,7 @@ function galerieFactory(dataGal) {
                 const mediaLikes = document.createElement( 'button' );
                 mediaLikes.setAttribute( 'class', 'mediaLikes');
                 mediaLikes.setAttribute('tabindex','0');
-                mediaLikes.setAttribute('onclick','addOneLike()');
+                mediaLikes.setAttribute('onclick', `addOneLike(${id})`);
                 mediaLikes.setAttribute('onkeydown',"if(event.keyCode == 13){event.target.click()}");
                 mediaLikes.textContent = likes.toString()+'❤'; 
                 titleDiv.appendChild(mediaLikes);
@@ -247,14 +247,18 @@ function openLightbox() {
 
 
 //-------------------- ajout de likes ------------------------------------
-function addOneLike(){
-    let previousLikes =this.textContent;
-    alert('+1 like /'+previousLikes);
-    this.textContent = (1+previousLikes).toString()+'❤'; 
+function addOneLike(arg){
+    for (let i=0;i<subGalerie.length;i++){
+        if (subGalerie[i].id==arg){
+            subGalerie[i].likes+=1;
+            alert('+1 like /'+(subGalerie[i].likes-1));
+        }
+    }
+    eraseDisplayDataG();
+    slideNb=1;
+    displayDataG(subGalerie);
+    
 }
-
-
-
 
 //-----------------------dropdown menu sort---------------------------------
 
@@ -270,11 +274,13 @@ function dropDownOpen(){
     dropBtn.style.display="none";
     dropDown.style.display="block";
     dropDown.focus();
-    //setTimeout(dropDown.addEventListener("blur",dropDownClose()),2000);
 }
 dropBtn.focus();
-dropBtn.addEventListener("click", dropDownOpen());
+dropBtn.addEventListener("onmouseover", dropDownOpen());
 dropBtn.addEventListener("keydown", function() {
-    if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});
+    if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});   /*enter=13  down=40*/
+dropDown.addEventListener("blur",setTimeout(dropDownClose(),1000));
+dropDown.addEventListener("keydown", function() {
+    if ( KeyboardEvent.code ==27 || KeyboardEvent.code==38 ) {dropDownOpen();}});   /* esc=27  up=38*/
 
 
