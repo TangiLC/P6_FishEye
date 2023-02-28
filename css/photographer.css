@@ -340,7 +340,10 @@ form .textArea {
     background-color: #DB8876;
     color : black;
 }
-  
+
+.dropdown-content:not(:focus){
+    display:none;
+}
 /*.dropdown:hover .dropdown-content {display: block;}
 .dropdown:focus .dropdown-content {display: block;}
   

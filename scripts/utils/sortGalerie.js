@@ -16,7 +16,18 @@ let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
 let maxHeight=window.screen.height;
+const stickyDiv = document.querySelector(".stickyDiv");
 
+function stickyMessage(){    //affichage du message sticky nombre de likes et tarif
+   
+    stickyDiv.innerHTML="";
+    const artistLikes =document.createElement('div');
+    artistLikes.textContent=artistTotalLikes+'❤';
+    stickyDiv.appendChild(artistLikes);
+    const artistPrice =document.createElement('div');
+    artistPrice.textContent=artistTarif;
+    stickyDiv.appendChild(artistPrice);
+}
 
 
 function sortingBy(param){     /************** fonction de tri de l'array d'objet selon key ****************/
@@ -163,15 +174,10 @@ function eraseDisplayDataG(){
             lightboxGal.appendChild(userCardDOMLightBox);
             slideNb +=1;
      });
-    
-    const stickyDiv = document.querySelector(".stickyDiv");
-    const artistLikes =document.createElement('div');
-    artistLikes.textContent=artistTotalLikes+'❤';
-    stickyDiv.appendChild(artistLikes);
-    const artistPrice =document.createElement('div');
-    artistPrice.textContent=artistTarif;
-    stickyDiv.appendChild(artistPrice);
-};
+     stickyMessage();
+}
+
+
                 
         // Récupère les datas du photographe choisi et initialise l'affichage
 const artist=parseInt(window.location.search.slice(-4,));
@@ -248,12 +254,15 @@ function openLightbox() {
 
 //-------------------- ajout de likes ------------------------------------
 function addOneLike(arg){
+    
     for (let i=0;i<subGalerie.length;i++){
         if (subGalerie[i].id==arg){
             subGalerie[i].likes+=1;
             alert('+1 like /'+(subGalerie[i].likes-1));
         }
     }
+    artistTotalLikes +=1;
+    stickyMessage();
     eraseDisplayDataG();
     slideNb=1;
     displayDataG(subGalerie);
