@@ -12,22 +12,22 @@ const galerieSect=document.querySelector('.galerie-section');
 
 function dropDownClose(){
     console.log('close');
-    dropVisible1.style.display="none";
-    dropVisible2.style.display="none";
+    [dropVisible1,dropVisible2,dropClose].forEach(function(e){e.style.display="none"});
+    
     dropOpen.style.display="block";
-    dropClose.style.display="none";
     galerieSect.style.marginTop="20px";
 }
 function dropDownOpen(){
     console.log('open');
-    dropVisible1.style.display="block";
-    dropVisible2.style.display="block";
+    [dropVisible1,dropVisible2,dropClose].forEach(function(e){e.style.display="block"});
+    
     dropOpen.style.display="none";
-    dropClose.style.display="block";
     galerieSect.style.marginTop="-90px";
     dropFocus.focus();
 }
+
 dropOpen.focus();
+
 ['onmouseover', 'click'].forEach(function(event) { dropOpen.addEventListener(event, dropDownOpen());});
 dropOpen.addEventListener("keydown", function() {
     if ( KeyboardEvent.code ==13 || KeyboardEvent.code==40 ) {dropDownOpen();}});   /*enter=13  down=40*/

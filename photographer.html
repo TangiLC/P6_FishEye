@@ -33,17 +33,17 @@
         
         <div class="dropdown" role="list" aria-haspopup="true">
           <div class="firstLine">
-            <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')" 
+            <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')" aria-label="trier par popularité"
                   onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Popularité&nbsp;</div>
             <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" aria-label="cliquer pour dérouler la liste"
                 onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" >▼</div>
             <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()" aria-label="cliquer pour fermer la liste"
                 onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" >▲</div>    
           </div>              
-              <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date') "
+              <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
                   onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
-              <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title') "
-                  onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Title</div>
+              <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
+                  onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Titre</div>
         </div> 
           
       
@@ -61,7 +61,7 @@
 				<header>
           <h2>Contactez-moi</h2>
           
-          <img src="assets/icons/xmark.svg" onclick="closeModal()" aria-label="fermeture du formulaire" alt="close" tabindex="0"
+          <img src="assets/icons/xmark.svg" onclick="closeModal()" alt="fermeture du formulaire" tabindex="0"
           onkeydown="if(event.keyCode == 13){event.target.click()}">
         </header>
         
@@ -86,7 +86,7 @@
 					</div>
 
           <div class="formData" data-validation-type="message"
-           data-error ="Message trop court (10 caractères) ou symboles invalides">
+           data-error ="Message trop court (10 caractères) ou symboles invalides.">
 						<label for="message">Votre message</label>
 						<input class="text-control textArea" type="text" id="message" name="message" 
               minlength="10" aria-label="message" placeholder="Votre message ici..." tabindex="0">
