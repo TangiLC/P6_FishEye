@@ -67,7 +67,7 @@ function photographerFactory(data) {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("label", name);
+        img.setAttribute("alt", name);
         rightCol.appendChild(img);
 
         const tarif = document.createElement( 'div' );

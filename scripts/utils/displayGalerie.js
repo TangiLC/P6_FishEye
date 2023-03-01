@@ -210,10 +210,10 @@ fetch('./data/photographers.json')
 
 //******************** lightbox  ********************************************/
 // Open lightbox
-const closeLb=document.getElementById("closeLightbox");
+const nextArrow=document.querySelector('.next');
 function openLightbox() {
     document.getElementById("lightbox-Modal").style.display = "block";
-    closeLb.focus({focusVisible: true});
+    nextArrow.focus({focusVisible: true});
   }
   
   // Close lightbox

@@ -15,7 +15,7 @@
   /* Modal Content */
   .lightbox-content {
     position: relative;
-    background-color: #D3573C;
+    background-color: white;
     display:flex;
     flex-direction: row;
     justify-content: space-around;
@@ -34,7 +34,7 @@
   .lightbox-content .titleDiv {
     font-size:150%;
     font-weight:700;
-    color:white;
+    color:#901C1C;
     text-align: center;
 
   }
@@ -42,18 +42,17 @@
   .closeLightbox {
     width:50px;
     height:auto;
-    filter:brightness(0) saturate(100%) invert(19%) sepia(96%) saturate(1395%) hue-rotate(350deg) brightness(95%) contrast(99%);
-    /*color: transparent;
-    background-color: #D3573C;*/
+    filter: brightness(0) saturate(100%) invert(12%) sepia(83%) saturate(5371%) hue-rotate(28deg) brightness(89%) contrast(87%);
     position: absolute;
     top: 10px;
-    left: 97%;
+    left: 96%;
+    padding:10px;
     z-index: 2;
   }
   
   .closeLightbox:hover,
   .closeLightbox:focus {
-    color: #999;
+    background-color: rgba(0, 0, 0, 0.4);
     text-decoration: none;
     cursor: pointer;
   }
@@ -82,8 +81,8 @@
     text-shadow:2px 3px black;
   }
   
-  .prev:hover,
-.next:hover {
+.prev:hover, .prev:focus,
+.next:hover, .next:focus {
   background-color: rgba(0, 0, 0, 0.6);
 }
   /* Position the "next button" to the right */
