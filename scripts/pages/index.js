@@ -8,6 +8,17 @@
 			"portrait": string
 		},*/
 let artistNb=0;
+let attributes={};
+
+function setListOfAttributes(el, attrs) {
+    Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
+}
+
+function createDiv(elementName, elementAttribute, elementAttributeKey, elementInnerText, parentTarget){
+    elementName.setAttribute(elementAttribute, elementAttributeKey);
+    elementName.innerText=elementInnerText;
+    parentTarget.appendChild(elementName);
+}
 
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
@@ -19,34 +30,33 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        
         const baliseA = document.createElement('a');
+        attributes={href:photographerpath, "aria-label":`lien vers la page de ${name}`}
+        setListOfAttributes(baliseA, attributes);
+        article.appendChild(baliseA);
 
-        baliseA.setAttribute("href", photographerpath);
-        baliseA.setAttribute("aria-label", `lien vers la page de ${name}`);
+       
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        img.setAttribute("label", name)
+        attributes={src:picture, alt:name};
+        setListOfAttributes(img, attributes);
+        baliseA.appendChild(img);
+
         const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
+        createDiv(h2, 'class', 'PhotographerName', name, baliseA);
+        
 
         const location = document.createElement( 'div' );
-        location.setAttribute( 'class', 'location');
-        location.textContent = city+', '+country;
+        createDiv(location, 'class', 'location', (city+', '+country), baliseA);
+        
 
         const motto = document.createElement( 'div' );
-        motto.setAttribute( 'class', 'tagline');
-        motto.textContent = tagline;
+        createDiv(motto, 'class', 'tagline', tagline, baliseA);
+        
 
         const tarif = document.createElement( 'div' );
-        tarif.setAttribute( 'class', 'price');
-        tarif.textContent = price.toString()+'€/jour';
-
-        article.appendChild(baliseA);
-        baliseA.appendChild(img);
-        baliseA.appendChild(h2);
-        baliseA.appendChild(location);
-        baliseA.appendChild(motto);
-        baliseA.appendChild(tarif);
+        createDiv(tarif, 'class', 'price', (price.toString()+'€/jour'), baliseA);
+        
         return (article);
     }
     return { name, picture, getUserCardDOM }

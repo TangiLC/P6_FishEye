@@ -40,12 +40,15 @@
   }
   /* The Close Button */
   .closeLightbox {
-    filter:invert(50%) sepia(60%) saturate(500%) hue-rotate(329deg) brightness(80%) contrast(90%);
+    width:50px;
+    height:auto;
+    filter:brightness(0) saturate(100%) invert(19%) sepia(96%) saturate(1395%) hue-rotate(350deg) brightness(95%) contrast(99%);
     /*color: transparent;
     background-color: #D3573C;*/
     position: absolute;
     top: 10px;
     left: 97%;
+    z-index: 2;
   }
   
   .closeLightbox:hover,
@@ -69,7 +72,7 @@
     width: auto;
     padding: 10px;
     margin-top: -50px;
-    color: #D3573C;
+    color: #942E10;
     font-weight: 800;
     font-size: 400%;
     transition: 0.6s ease;

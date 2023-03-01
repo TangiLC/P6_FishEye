@@ -7,6 +7,16 @@
 			"price": nb,
 			"portrait": string
 		},*/
+let attribs={};
+function setListOfAttribs(el, attrs) {
+    Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
+}
+        
+function attribDiv(elementName, elementAttribute, elementAttributeKey, elementInnerText, parentTarget){
+    elementName.setAttribute(elementAttribute, elementAttributeKey);
+    elementName.innerText=elementInnerText;
+    parentTarget.appendChild(elementName);
+}
 
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
@@ -16,50 +26,46 @@ function photographerFactory(data) {
         
     function getUserCardDOM() {
         const article = document.createElement( 'article' );   
-        article.setAttribute("class", "galerie-header");
-        article.setAttribute("aria-label", `galerie de ${name}`);
+        attribs={class:"galerie-header",ariaLabel:`galerie de ${name}`};
+        setListOfAttribs(article, attribs);
 
         const leftCol = document.createElement( 'div' );
-        leftCol.setAttribute( 'class', 'leftCol');
-        article.appendChild(leftCol);
+        attribDiv(leftCol, 'class', 'leftCol', "", article);
+
         const middleCol = document.createElement( 'div' );
-        middleCol.setAttribute( 'class', 'middleCol');
-        article.appendChild(middleCol);
+        attribDiv(middleCol, 'class', 'middleCol', "", article);
+
         const rightCol = document.createElement( 'div' );
-        rightCol.setAttribute( 'class', 'rightCol');
-        article.appendChild(rightCol);
+        attribDiv(rightCol, 'class', 'rightCol', "", article);
 
         const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
+        attribDiv(h2, 'class', 'phName', name, leftCol);
         
         const location = document.createElement( 'div' );
-        location.setAttribute( 'class', 'location');
-        location.textContent = city+', '+country;
+        attribDiv(location, 'class', 'location', (city+', '+country), leftCol);
+        
         
         const motto = document.createElement( 'div' );
-        motto.setAttribute( 'class', 'tagline');
-        motto.textContent = tagline;
+        attribDiv(motto, 'class', 'tagline', tagline, leftCol);
+       
         
         const displayModal = document.createElement( 'button');
-        displayModal.setAttribute("class","contact_button");
+        //attribs={'onclick':'displayModal()', ariaLabel:"ouverture du formulaire"};
+        //setListOfAttribs(displayModal, attribs);
         displayModal.setAttribute("onclick","displayModal()");
         displayModal.setAttribute("aria-label","ouverture du formulaire");
-        displayModal.textContent="Contactez-moi";
+        attribDiv(displayModal, 'class', 'contact_button', "Contactez-moi", middleCol);
+        
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.setAttribute("label", name);
+        rightCol.appendChild(img);
 
         const tarif = document.createElement( 'div' );
         tarif.setAttribute( 'class', 'price anchored');
         tarif.textContent = price.toString()+'€/jour';
-        
-        leftCol.appendChild(h2);
-        leftCol.appendChild(location);
-        leftCol.appendChild(motto);
-        middleCol.appendChild(displayModal);
-        rightCol.appendChild(img);
-        
+    
 
         return (article);
     }

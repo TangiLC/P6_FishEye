@@ -3,6 +3,7 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" >
     <link href="css/photographer.css" rel="stylesheet" type="text/css" >
+    <link href="css/modal.css" rel="stylesheet" type="text/css" >
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" >
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -21,7 +22,7 @@
     <main id="main">
       <div class="photograph-header">
         
-        <!--******    création dynamique de contenu dans cette div par photographer.js ▲*********-->
+        <!--******    création dynamique de contenu dans cette div par photographer.js *********-->
       </div>
      
       <div class="sort-selection">
@@ -61,7 +62,7 @@
 				<header>
           <h2>Contactez-moi</h2>
           
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" alt="close" tabindex="0"
+          <img src="assets/icons/xmark.svg" onclick="closeModal()" aria-label="fermeture du formulaire" alt="close" tabindex="0"
           onkeydown="if(event.keyCode == 13){event.target.click()}">
         </header>
         
@@ -102,7 +103,7 @@
 
     <!--*******************************     Modal/Lightbox         *****************************-->
 <div id="lightbox-Modal" class="lightbox-Modal">
-  <img src="assets/icons/close.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail" id="closeLightbox"
+  <img src="assets/icons/xmark.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail" id="closeLightbox"
       onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" alt="fermeture"  class="closeLightbox">
   <div class="lightbox-content">
 
