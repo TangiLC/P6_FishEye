@@ -51,42 +51,6 @@ function createDiv(elementName, elementAttribute, elementAttributeKey, elementIn
     parentTarget.appendChild(elementName);
 }
 
-function lightboxFactory(dataGal){
-    const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
-    
-    function getUserCardDOM() {
-        const lightboxArticle = document.createElement( 'div' ); 
-        let attrib={class:'mySlides', 'aria-label':`galerie de ${artistFirstName}`};  
-        setListOfAttributes(lightboxArticle, attrib);  
-        
-        if (dataGal.hasOwnProperty('image')){
-            contentPath = `./assets/photographers/${artistFirstName}/${image}`;
-            const artistImg = document.createElement( 'img' );
-            let attributes ={src:contentPath, alt:title, class:'lightbox-img', height:maxHeight*.76};
-            setListOfAttributes(artistImg, attributes);
-            lightboxArticle.appendChild(artistImg);  
-        }
-        else if (dataGal.hasOwnProperty('video')){
-            contentPath = `./assets/photographers/${artistFirstName}/${video}`;
-            const artistVideo = document.createElement( 'video' );
-            let attributes ={width :'95%', height :'auto', tabindex:'0', controls:'True', muted:'true', label:title, class:'lightbox-img'};
-            setListOfAttributes(artistVideo, attributes);
-            lightboxArticle.appendChild(artistVideo);
-            const videoSource = document.createElement( 'source' );
-            createDiv(videoSource, 'src', contentPath, '', artistVideo);
-        }
-
-        const titleDiv = document.createElement( 'div' );
-        titleDiv.setAttribute( 'class', 'titleDiv');
-        titleDiv.textContent = title;
-        lightboxArticle.appendChild(titleDiv);
-
-        return (lightboxArticle);
-    }
-    return { artistFirstName, photographerId, getUserCardDOM }
-}
-
-
 
 function galerieFactory(dataGal) {
     const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
@@ -99,7 +63,7 @@ function galerieFactory(dataGal) {
                 setListOfAttributes(articleGalerie, attrib);
                                       
                 if (dataGal.hasOwnProperty('image')){
-                    contentPath = `./assets/photographers/${artistFirstName}/${image}`;
+                    contentPath = `./assets/photographers/${artistFirstName}/mini_${image}`;
                     videoTitle="";
                     const artistImg = document.createElement( 'img' );
                     let attributes ={src: contentPath, alt:title, tabindex:'0',
@@ -139,7 +103,46 @@ function galerieFactory(dataGal) {
                 return (articleGalerie);
             }
             return { artistFirstName, photographerId, getUserCardDOM }
+
+}
+
+
+function lightboxFactory(dataGal){
+    const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
+    
+    function getUserCardDOM() {
+        const lightboxArticle = document.createElement( 'div' ); 
+        let attrib={class:'mySlides', 'aria-label':`galerie de ${artistFirstName}`};  
+        setListOfAttributes(lightboxArticle, attrib);  
+        
+        if (dataGal.hasOwnProperty('image')){
+            contentPath = `./assets/photographers/${artistFirstName}/${image}`;
+            const artistImg = document.createElement( 'img' );
+            let attributes ={src:contentPath, alt:title, class:'lightbox-img', height:maxHeight*.76};
+            setListOfAttributes(artistImg, attributes);
+            lightboxArticle.appendChild(artistImg);  
         }
+        else if (dataGal.hasOwnProperty('video')){
+            contentPath = `./assets/photographers/${artistFirstName}/${video}`;
+            const artistVideo = document.createElement( 'video' );
+            let attributes ={width :'95%', height :'auto', tabindex:'0', controls:'True', muted:'true', label:title, class:'lightbox-img'};
+            setListOfAttributes(artistVideo, attributes);
+            lightboxArticle.appendChild(artistVideo);
+            const videoSource = document.createElement( 'source' );
+            createDiv(videoSource, 'src', contentPath, '', artistVideo);
+        }
+
+        const titleDiv = document.createElement( 'div' );
+        titleDiv.setAttribute( 'class', 'titleDiv');
+        titleDiv.textContent = title;
+        lightboxArticle.appendChild(titleDiv);
+
+        return (lightboxArticle);
+    }
+    return { artistFirstName, photographerId, getUserCardDOM }
+}
+
+        
 function eraseDisplayDataG(){
     const galerieSection = document.querySelector(".galerie-section");
     const lightboxGal = document.querySelector(".lightbox-content");

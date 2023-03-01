@@ -23,7 +23,7 @@ function createDiv(elementName, elementAttribute, elementAttributeKey, elementIn
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
-    const picture = `./assets/photographers/zzportrait/zz${portrait}`;
+    const picture = `./assets/photographers/zzportrait/mini_${portrait}`;
     let path=id+(artistNb.toString()).padStart(4, '0');
     const photographerpath = `photographer.html?id=${path}`;
 
