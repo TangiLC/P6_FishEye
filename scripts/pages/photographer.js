@@ -8,6 +8,8 @@
 			"portrait": string
 		},*/
 let attribs={};
+const loaderGrid=document.querySelector('.lds-grid');
+
 function setListOfAttribs(el, attrs) {
     Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
 }
@@ -25,6 +27,12 @@ function photographerFactory(data) {
         
         
     function getUserCardDOM() {
+        
+        for(let j=0;j<9;j++){
+            var loaderImg=document.createElement('img');
+            attribDiv(loaderImg, 'src', picture, "", loaderGrid);
+        }
+
         const article = document.createElement( 'article' );   
         attribs={class:"galerie-header", ariaLabel:`galerie de ${name}`};
         setListOfAttribs(article, attribs);
@@ -105,11 +113,9 @@ fetch('./data/photographers.json')
         console.log('Fetch Error :-S', err);
     });
 
-
 function loader(){
-    const mainBg=document.getElementById('main');
-    const loader=document.querySelector('.lds-grid')
-    mainBg.style.display = "none";
-    setTimeout(function(){loader.style.display="none";mainBg.style.display = "block";},2000);
+        const mainBg=document.getElementById('main');
+        mainBg.style.display = "none";
+        setTimeout(function(){loaderGrid.style.display="none"; mainBg.style.display = "block";},3000);
 }
 loader();
