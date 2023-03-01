@@ -17,6 +17,7 @@ let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
 let maxHeight=window.screen.height;
+let previousId=0;
 const stickyDiv = document.querySelector(".stickyDiv");
 
 function stickyMessage(){    //****** affichage du message sticky nombre de likes et tarif ********/
@@ -243,5 +244,25 @@ function openLightbox() {
     slides[slideNb-1].style.display = "block";
     console.log(slideNb);
   }
+
+
+//********************* ajout de likes **********************************/
+function addOneLike(arg){
+    if(previousId!=arg){
+        for (let i=0;i<subGalerie.length;i++){
+            if (subGalerie[i].id==arg){
+                subGalerie[i].likes+=1;
+                console.log('+1 like /'+(subGalerie[i].likes-1)+artistTotalLikes);
+                previousId=arg;
+            }
+        }
+        artistTotalLikes +=1;
+        stickyMessage();
+        eraseDisplayDataG();
+        slideNb=1;
+        displayDataG(subGalerie);
+    }
+    
+}
 
 
