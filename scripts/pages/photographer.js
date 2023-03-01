@@ -26,7 +26,7 @@ function photographerFactory(data) {
         
     function getUserCardDOM() {
         const article = document.createElement( 'article' );   
-        attribs={class:"galerie-header",ariaLabel:`galerie de ${name}`};
+        attribs={class:"galerie-header", ariaLabel:`galerie de ${name}`};
         setListOfAttribs(article, attribs);
 
         const leftCol = document.createElement( 'div' );
@@ -104,4 +104,12 @@ fetch('./data/photographers.json')
     .catch(function(err) {
         console.log('Fetch Error :-S', err);
     });
-            
+
+
+function loader(){
+    const mainBg=document.getElementById('main');
+    const loader=document.querySelector('.lds-grid')
+    mainBg.style.display = "none";
+    setTimeout(function(){loader.style.display="none";mainBg.style.display = "block";},2000);
+}
+loader();

@@ -32,7 +32,7 @@ function photographerFactory(data) {
         const article = document.createElement( 'article' );
         
         const baliseA = document.createElement('a');
-        attributes={href:photographerpath, "aria-label":`lien vers la page de ${name}`}
+        attributes={href:photographerpath, alt:`lien vers la page de ${name}`}
         setListOfAttributes(baliseA, attributes);
         article.appendChild(baliseA);
 
