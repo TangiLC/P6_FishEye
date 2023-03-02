@@ -1,21 +1,21 @@
 /*structure photographers.json{
-			"name": string,
-			"id": nb,
-			"city": string,
-			"country": string,
-			"tagline": string,
-			"price": nb,
-			"portrait": string
-		},*/
+"name": string,
+"id": nb,
+"city": string,
+"country": string,
+"tagline": string,
+"price": nb,
+"portrait": string}*/
 
 const loaderGrid=document.querySelector('.lds-grid');
 
 function setListOfAttribs(elem, attrs) {
-    Object.keys(attrs).forEach(key => elem.setAttribute(key, attrs[key]));
+    Object.keys(attrs).forEach((key) => elem.setAttribute(key, attrs[key]));
 }
         
 function attribAppendDiv(elementName, elementAttributes_keys, elementInnerText, parentTarget){
-    Object.keys(elementAttributes_keys).forEach(key => elementName.setAttribute(key, elementAttributes_keys[key]));
+    Object.keys(elementAttributes_keys).forEach((key) =>
+        elementName.setAttribute(key, elementAttributes_keys[key]));
     elementName.innerText=elementInnerText;
     parentTarget.appendChild(elementName);
 }
@@ -28,7 +28,7 @@ function photographerFactory(data) {
         
     function getUserCardDOM() {
         
-        for(let j=0;j<9;j++){
+        for(var j=0;j<9;j++){
             var loaderImg=document.createElement('img');
             attribAppendDiv(loaderImg, {src: picture}, "", loaderGrid);
         }
@@ -81,8 +81,8 @@ function photographerFactory(data) {
 };
         
 // Récupère les datas des photographes et initialise l'affichage
-const artistId=parseInt(window.location.search.slice(-4,));
-console.log(artistId)
+const artistId=parseInt(window.location.search.slice(-4));
+console.log(artistId);
 
 fetch('./data/photographers.json')
     .then(
