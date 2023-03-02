@@ -64,14 +64,14 @@ function galerieFactory(dataGal) {
               
             function getUserCardDOM() {
                 const articleGalerie = document.createElement("article"); 
-                var attributes={class:"content_card", "aria-label":`galerie de ${artistFirstName}`};  
+                attributes={class:"content_card", "aria-label":`galerie de ${artistFirstName}`};  
                 setListOfAttributes(articleGalerie, attributes);
                                       
                 if (dataGal.hasOwnProperty("image")){
                     contentPath = `./assets/photographers/${artistFirstName}/mini_${image}`;
                     videoTitle="";
                     const artistImg = document.createElement("img");
-                    var attributes ={src: contentPath, alt:title, tabindex:"0",
+                    attributes ={src: contentPath, alt:title, tabindex:"0",
                         onclick:`openLightbox();currentSlide(${slideNb})`,
                         onkeydown:"if(event.keyCode == 13){event.target.click()}"};
                     createDiv(artistImg, attributes, "", articleGalerie);
@@ -81,7 +81,7 @@ function galerieFactory(dataGal) {
                     contentPath = `./assets/photographers/${artistFirstName}/${video}`;
                     videoTitle="► ";
                     const artistVideo = document.createElement("video");
-                    var attributes ={
+                    attributes ={
                         width :"350px",height :"300px",muted:"true",alt:title,tabindex:"0", 
                         onclick:`openLightbox();currentSlide(${slideNb})`,
                         onkeydown:"if(event.keyCode == 13){event.target.click()}"};
@@ -102,14 +102,13 @@ function galerieFactory(dataGal) {
             
                 
                 const mediaLikes = document.createElement("button");
-                var attributes = {
-                    class: "mediaLikes", tabindex:"0",onclick:`addOneLike(${id})`,
-                    ariaLabel:"nombre de likes",
+                attributes = {class: "mediaLikes", tabindex:"0",
+                    onclick: `addOneLike(${id})`, ariaLabel: "nombre de likes",
                     onkeydown:"if(event.keyCode == 13){event.target.click()}"};
                 createDiv(mediaLikes, attributes, (likes.toString()+"❤"), titleDiv);
                 
                 return (articleGalerie);
-            }
+            };
             return { artistFirstName, photographerId, getUserCardDOM };
 }
 
@@ -124,14 +123,14 @@ function lightboxFactory(dataGal){
         if (dataGal.hasOwnProperty("image")){
             contentPath = `./assets/photographers/${artistFirstName}/${image}`;
             const artistImg = document.createElement("img");
-            let attributes ={src:contentPath, alt:title, 
+            attributes ={src:contentPath, alt:title, 
                    class:"lightbox-img", height:(maxHeight*0.76)};
             createDiv(artistImg, attributes, "", lightboxArticle);
         }
         else if (dataGal.hasOwnProperty("video")){
             contentPath = `./assets/photographers/${artistFirstName}/${video}`;
             const artistVideo = document.createElement("video");
-            let attributes ={width :"95%", height :"auto", tabindex:"0",
+            attributes ={width :"95%", height :"auto", tabindex:"0",
                controls:"True", muted:"true", label:title, class:"lightbox-img"};
             createDiv(artistVideo, attributes, "", lightboxArticle);
             const videoSource = document.createElement("source");
@@ -265,5 +264,5 @@ function addOneLike(arg){
         slideNb=1;
         displayDataG(subGalerie);
     }
-    else{alert("❤ Vous avez déjà voté ❤")}
+    else{alert("❤ Vous avez déjà voté ❤")};
 }

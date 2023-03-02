@@ -1,14 +1,13 @@
 /*structure photographers.json{
-			"name": string,
-			"id": nb,
-			"city": string,
-			"country": string,
-			"tagline": string,
-			"price": nb,
-			"portrait": string
-		},*/
+  "name": string,
+  "id": nb,
+  "city": string,
+  "country": string,
+  "tagline": string,
+  "price": nb,
+  "portrait": string}*/
 let artistNb=0;
-let attributes={};
+var attributes={};
 
 function setListOfAttributes(el, attrs) {
     Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
