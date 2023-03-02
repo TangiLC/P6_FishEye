@@ -31,18 +31,18 @@
         
         <span>Trier par &nbsp;</span>
         
-        <div class="dropdown" role="list" aria-haspopup="true">
-          <div class="firstLine">
+        <div class="dropdown" role="list">
+          <div class="firstLine" role="listitem">
             <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')" aria-label="trier par popularité"
-                  onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Popularité&nbsp;</div>
+                  onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
             <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" aria-label="cliquer pour dérouler la liste"
-                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" >▼</div>
+                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" aria-haspopup="true">▼</div>
             <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()" aria-label="cliquer pour fermer la liste"
-                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" >▲</div>    
+                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" aria-haspopup="false">▲</div>    
           </div>              
-              <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
+          <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
                   onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
-              <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
+          <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
                   onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Titre</div>
         </div> 
           
@@ -93,8 +93,8 @@
 					</div>
 
           <button class="contact_button" aria-label="envoi du formulaire" tabindex="0">Envoyer</button>
-          <p class="formSuccessMessage" id="formSuccessMessage">Thanks, Dude</p>
-          <input class="btn-close" type="reset" id="btn-close" value="Fermer" alt="Fermer" onclick="resetThenCloseModal()" tabindex="0">
+          <label for="btn-close" class="formSuccessMessage" id="formSuccessMessage">Envoi du formulaire, fermeture</label>
+          <input class="btn-close" type="reset" id="btn-close" value="Fermer" onclick="resetThenCloseModal()" tabindex="0">
 				</form>
       </div>
 		</div>
