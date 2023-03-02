@@ -65,6 +65,10 @@ main {
     border:2px solid #911D1D;
     cursor: pointer;
 }
+.galerieVideo{
+    background-image: url("../assets/images/Film_strip.png");
+    border: 2px solid white;
+}
 
 .contact_button:hover .contact_button:focus{
     background-color: #DB8876;
