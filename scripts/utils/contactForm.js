@@ -12,17 +12,48 @@ const formDataToValidate = document.querySelectorAll(".formData[data-validation-
 const formSuccessMsg= document.getElementById("formSuccessMessage");
 
 
+// add all the elements inside modal which you want to make focusable
+const  focusableElements =
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
+const focusableContent = modal.querySelectorAll(focusableElements);
+const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
+
+document.addEventListener('keydown', function(e) {
+  let isTabPressed = e.key === 'Tab' || e.keydown === 9;
+
+  if (!isTabPressed) {
+    return;
+  }
+
+  if (e.shiftKey) { // if shift key pressed for shift + tab combination
+    if (document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus(); // add focus for the last focusable element
+      e.preventDefault();
+    }
+  } else { // if tab key is pressed
+    if (document.activeElement === lastFocusableElement) { // if focused has reached to last element then focus 1st element after pressing tab
+      firstFocusableElement.focus(); // add focus for the first focusable element
+      e.preventDefault();
+    }
+  }
+});
+
+
 function displayModal() {
 	  modal.style.display = "block";
     main.style.display = "none";
     header.style.opacity = '.2';
-    closeBtn.focus();
+    firstFocusableElement.focus();
 }
+
 function closeModal() {
     modal.style.display = "none";
     main.style.display = "block";
     header.style.opacity = '1';
 }
+
 function resetThenCloseModal(){
     setTimeout(form.reset(),2000);
     location.reload();

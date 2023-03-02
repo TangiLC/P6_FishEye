@@ -7,15 +7,15 @@
 			"price": nb,
 			"portrait": string
 		},*/
-let attribs={};
+
 const loaderGrid=document.querySelector('.lds-grid');
 
-function setListOfAttribs(el, attrs) {
-    Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
+function setListOfAttribs(elem, attrs) {
+    Object.keys(attrs).forEach(key => elem.setAttribute(key, attrs[key]));
 }
         
-function attribDiv(elementName, elementAttribute, elementAttributeKey, elementInnerText, parentTarget){
-    elementName.setAttribute(elementAttribute, elementAttributeKey);
+function attribAppendDiv(elementName, elementAttributes_keys, elementInnerText, parentTarget){
+    Object.keys(elementAttributes_keys).forEach(key => elementName.setAttribute(key, elementAttributes_keys[key]));
     elementName.innerText=elementInnerText;
     parentTarget.appendChild(elementName);
 }
@@ -30,45 +30,37 @@ function photographerFactory(data) {
         
         for(let j=0;j<9;j++){
             var loaderImg=document.createElement('img');
-            attribDiv(loaderImg, 'src', picture, "", loaderGrid);
+            attribAppendDiv(loaderImg, {src: picture}, "", loaderGrid);
         }
 
         const article = document.createElement( 'article' );   
-        attribs={class:"galerie-header", ariaLabel:`galerie de ${name}`};
-        setListOfAttribs(article, attribs);
+        setListOfAttribs(article, {class:"galerie-header", ariaLabel:`galerie de ${name}`});
 
         const leftCol = document.createElement( 'div' );
-        attribDiv(leftCol, 'class', 'leftCol', "", article);
+        attribAppendDiv(leftCol, {class: 'leftCol'}, "", article);
 
         const middleCol = document.createElement( 'div' );
-        attribDiv(middleCol, 'class', 'middleCol', "", article);
+        attribAppendDiv(middleCol, {class: 'middleCol'}, "", article);
 
         const rightCol = document.createElement( 'div' );
-        attribDiv(rightCol, 'class', 'rightCol', "", article);
+        attribAppendDiv(rightCol, {class: 'rightCol'}, "", article);
 
         const h2 = document.createElement( 'h2' );
-        attribDiv(h2, 'class', 'phName', name, leftCol);
+        attribAppendDiv(h2, {class: 'phName'}, name, leftCol);
         
         const location = document.createElement( 'div' );
-        attribDiv(location, 'class', 'location', (city+', '+country), leftCol);
-        
-        
+        attribAppendDiv(location, {class: 'location'}, (city+', '+country), leftCol);
+         
         const motto = document.createElement( 'div' );
-        attribDiv(motto, 'class', 'tagline', tagline, leftCol);
-       
+        attribAppendDiv(motto, {class: 'tagline'}, tagline, leftCol);
         
         const displayModal = document.createElement( 'button');
-        //attribs={'onclick':'displayModal()', ariaLabel:"ouverture du formulaire"};
-        //setListOfAttribs(displayModal, attribs);
-        displayModal.setAttribute("onclick","displayModal()");
-        displayModal.setAttribute("aria-label","ouverture du formulaire");
-        attribDiv(displayModal, 'class', 'contact_button', "Contactez-moi", middleCol);
+        attribAppendDiv(displayModal, {class:'contact_button','onclick':'displayModal()',
+            ariaLabel:"ouverture du formulaire"}, "Contactez-moi", middleCol);
         
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
-        rightCol.appendChild(img);
+        attribAppendDiv(img, {src:picture, alt:name}, "", rightCol);
 
         const tarif = document.createElement( 'div' );
         tarif.setAttribute( 'class', 'price anchored');
@@ -82,10 +74,9 @@ function photographerFactory(data) {
         
 /*async*/ function displayData(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-        
+    const photographerModel = photographerFactory(photographer);
+    const userCardDOM = photographerModel.getUserCardDOM();
+    photographersSection.appendChild(userCardDOM);
     
 };
         
