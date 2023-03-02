@@ -81,7 +81,7 @@ function galerieFactory(dataGal) {
                     contentPath = `./assets/photographers/${artistFirstName}/${video}`;
                     videoTitle="► ";
                     const artistVideo = document.createElement("video");
-                    attributes ={
+                    attributes ={class:"galerieVideo",
                         width :"350px",height :"300px",muted:"true",alt:title,tabindex:"0", 
                         onclick:`openLightbox();currentSlide(${slideNb})`,
                         onkeydown:"if(event.keyCode == 13){event.target.click()}"};
