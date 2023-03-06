@@ -13,7 +13,7 @@ let subGalerie=[];
 let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
-let previousId=[];
+let previousId=[];    //liste des id des likes précédents pour interdire de like x2
 
 const stickDiv = document.querySelector(".stickyDiv");
 
@@ -43,8 +43,6 @@ function sortingBy(param){
   }
 
 
-
-
 //***** fonction efface et affiche à nouveau la galerie ***********/        
 function eraseDisplayDataG(){
     const galerieSection = document.querySelector(".galerie-section");
@@ -71,11 +69,9 @@ function eraseDisplayDataG(){
 }
 
 
-                
 // Récupère les datas du photographe choisi et initialise l"affichage
 const artist=parseInt(window.location.search.slice(-4,));
 console.log(artist);
-
 
 fetch("./data/photographers.json")
     .then(
