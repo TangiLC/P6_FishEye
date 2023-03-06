@@ -1,4 +1,4 @@
-let maxHeight=window.screen.height;
+let maxHeight=window.screen.availHeight ;
 var textDate="";
 
 //*** fonction pour attribuer une liste de paire attribut/key à un objet ***/
@@ -26,6 +26,7 @@ function getUserCardDOM(dataGal,FirstName,slide_Nb) {
     setListOfAttributes(articleGalerie, attributes);
                                       
     if (dataGal.hasOwnProperty("image")){
+        textDate=date;
         var contentPath = `./assets/photographers/${artistFirstName}/mini_${image}`;
         var videoTitle="";
         const artistImg = document.createElement("img");
@@ -35,6 +36,7 @@ function getUserCardDOM(dataGal,FirstName,slide_Nb) {
             createDiv(artistImg, attributes, "", articleGalerie);            
     }
     else if (dataGal.hasOwnProperty("video")){
+        textDate=date+" V I D É O ►";
         var contentPath = `./assets/photographers/${artistFirstName}/${video}`;
         var videoTitle="► ";
         const artistVideo = document.createElement("video");
@@ -46,8 +48,7 @@ function getUserCardDOM(dataGal,FirstName,slide_Nb) {
         const videoSource = document.createElement("source");
         createDiv(videoSource, {src: contentPath}, "", artistVideo);
     }
-    if (dataGal.hasOwnProperty("video")){textDate=date+" V I D É O ►";}
-    else {textDate=date;}
+    
     const dateDiv= document.createElement("div");
     createDiv(dateDiv, {class:"dateDiv"}, textDate, articleGalerie);
             
@@ -64,7 +65,7 @@ function getUserCardDOM(dataGal,FirstName,slide_Nb) {
     createDiv(mediaLikes, attributes, (likes.toString()+"❤"), titleDiv);
                 
     return (articleGalerie);
-};
+}
 
 //***** factory de création de l"UserCardDOM pour lightbox ********/
 
@@ -84,7 +85,7 @@ function getUserCardDOMLightBox(dataGal,FirstName,slide_Nb) {
         var contentPath = `./assets/photographers/${artistFirstName}/${image}`;
         const artistImg = document.createElement("img");
         var attributes ={src:contentPath, alt:title, 
-               class:"lightbox-img", height:(maxHeight*0.76)};
+               class:"lightbox-img", height:(maxHeight*0.8)};
         createDiv(artistImg, attributes, "", lightboxArticle);
     }
     else if (dataGal.hasOwnProperty("video")){
