@@ -70,7 +70,7 @@ main {
     border: 2px solid white;
 }
 
-.contact_button:hover .contact_button:focus{
+.contact_button:hover, .contact_button:focus{
     background-color: #DB8876;
     color:black;
 }

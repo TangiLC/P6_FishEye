@@ -10,15 +10,10 @@
 
 let artistFirstName="Mimi";
 let subGalerie=[];
-let contentPath="";
-let videoTitle="";
-let textDate="";
 let artistTotalLikes=0;
 let artistTarif=0;
 let slideNb=1;
-let maxHeight=window.screen.height;
 let previousId=[];
-var attributes={};
 
 const stickDiv = document.querySelector(".stickyDiv");
 
@@ -46,106 +41,11 @@ function sortingBy(param){
     slideNb=1;
     displayDataG(subGalerie);
   }
-//*** fonction pour attribuer une liste de paire attribut/key à un objet ***/
-function setListOfAttributes(el, attrs) {
-    Object.keys(attrs).forEach((key) => el.setAttribute(key, attrs[key]));
-}
 
-function createDiv(elementName, Attribute_key, elemInnerText, parentTarget){
-    Object.keys(Attribute_key).forEach(
-        (key) => elementName.setAttribute(key, Attribute_key[key]));
-    elementName.innerText=elemInnerText;
-    parentTarget.appendChild(elementName);
-}
 
-//***** factory principale de création de l"UserCardDOM ********/
-function galerieFactory(dataGal) {
-    const {id,photographerId,title,image,video,likes,date,price_unit}= dataGal;
-              
-            function getUserCardDOM() {
-                const articleGalerie = document.createElement("article"); 
-                attributes={class:"content_card", "aria-label":`galerie de ${artistFirstName}`};  
-                setListOfAttributes(articleGalerie, attributes);
-                                      
-                if (dataGal.hasOwnProperty("image")){
-                    contentPath = `./assets/photographers/${artistFirstName}/mini_${image}`;
-                    videoTitle="";
-                    const artistImg = document.createElement("img");
-                    attributes ={src: contentPath, alt:title, tabindex:"0",
-                        onclick:`openLightbox();currentSlide(${slideNb})`,
-                        onkeydown:"if(event.keyCode == 13){event.target.click()}"};
-                    createDiv(artistImg, attributes, "", articleGalerie);
-                    
-                }
-                else if (dataGal.hasOwnProperty("video")){
-                    contentPath = `./assets/photographers/${artistFirstName}/${video}`;
-                    videoTitle="► ";
-                    const artistVideo = document.createElement("video");
-                    attributes ={class:"galerieVideo",
-                        width :"350px",height :"300px",muted:"true",alt:title,tabindex:"0", 
-                        onclick:`openLightbox();currentSlide(${slideNb})`,
-                        onkeydown:"if(event.keyCode == 13){event.target.click()}"};
-                    createDiv(artistVideo, attributes, "", articleGalerie);
-                    const videoSource = document.createElement("source");
-                    createDiv(videoSource, {src: contentPath}, "", artistVideo);
-                }
-                if (dataGal.hasOwnProperty("video")){textDate=date+" V I D É O ►";}
-                else {textDate=date;}
-                const dateDiv= document.createElement("div");
-                createDiv(dateDiv, {class:"dateDiv"}, textDate, articleGalerie);
-            
-                const titleDiv = document.createElement("div");
-                createDiv(titleDiv, {class:"titleDiv"}, "", articleGalerie);
-                
-                const mediaTitle = document.createElement("div");
-                createDiv(mediaTitle, {class:"media-title"}, (videoTitle+title), titleDiv);
-            
-                
-                const mediaLikes = document.createElement("button");
-                attributes = {class: "mediaLikes", tabindex:"0",
-                    onclick: `addOneLike(${id})`, ariaLabel: "nombre de likes",
-                    onkeydown:"if(event.keyCode == 13){event.target.click()}"};
-                createDiv(mediaLikes, attributes, (likes.toString()+"❤"), titleDiv);
-                
-                return (articleGalerie);
-            };
-            return { artistFirstName, photographerId, getUserCardDOM };
-}
 
-function lightboxFactory(dataGal){
-    const {id,photographerId,title,image,video,likes,date,price_unit}= dataGal;
-    
-    function getUserCardDOM() {
-        const lightboxArticle = document.createElement("div"); 
-        let attrib={class:"mySlides","aria-label":`galerie de ${artistFirstName}`};  
-        setListOfAttributes(lightboxArticle, attrib);  
-        
-        if (dataGal.hasOwnProperty("image")){
-            contentPath = `./assets/photographers/${artistFirstName}/${image}`;
-            const artistImg = document.createElement("img");
-            attributes ={src:contentPath, alt:title, 
-                   class:"lightbox-img", height:(maxHeight*0.76)};
-            createDiv(artistImg, attributes, "", lightboxArticle);
-        }
-        else if (dataGal.hasOwnProperty("video")){
-            contentPath = `./assets/photographers/${artistFirstName}/${video}`;
-            const artistVideo = document.createElement("video");
-            attributes ={width :"95%", height :"auto", tabindex:"0",
-               controls:"True", muted:"true", label:title, class:"lightbox-img"};
-            createDiv(artistVideo, attributes, "", lightboxArticle);
-            const videoSource = document.createElement("source");
-            createDiv(videoSource, {src: contentPath}, "", artistVideo);
-        }
 
-        const titleDiv = document.createElement("div");
-        createDiv(titleDiv, {class:"titleDiv"}, title, lightboxArticle);
-
-        return (lightboxArticle);
-    }
-    return { artistFirstName, photographerId, getUserCardDOM };
-}
-
-        
+//***** fonction efface et affiche à nouveau la galerie ***********/        
 function eraseDisplayDataG(){
     const galerieSection = document.querySelector(".galerie-section");
     const lightboxGal = document.querySelector(".lightbox-content");
@@ -160,12 +60,10 @@ function eraseDisplayDataG(){
     const lightboxGal = document.querySelector(".lightbox-content");
     
     sub.forEach((medium) => {
-            const mediaCard = galerieFactory(medium);
-            const userCardDOM = mediaCard.getUserCardDOM();
+            const userCardDOM = getUserCardDOM(medium,artistFirstName,slideNb);
             galerieSection.appendChild(userCardDOM);
 
-            const mediaCardLightBox = lightboxFactory(medium);
-            const userCardDOMLightBox = mediaCardLightBox.getUserCardDOM();
+            const userCardDOMLightBox = getUserCardDOMLightBox(medium,artistFirstName,slideNb);
             lightboxGal.appendChild(userCardDOMLightBox);
             slideNb +=1;
      });
@@ -174,7 +72,7 @@ function eraseDisplayDataG(){
 
 
                 
-        // Récupère les datas du photographe choisi et initialise l"affichage
+// Récupère les datas du photographe choisi et initialise l"affichage
 const artist=parseInt(window.location.search.slice(-4,));
 console.log(artist);
 
