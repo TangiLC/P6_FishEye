@@ -1,124 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/loader.css" rel="stylesheet" type="text/css" >
-    <link href="css/style.css" rel="stylesheet" type="text/css" >
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" >
-    <link href="css/modal.css" rel="stylesheet" type="text/css" >
-    <link href="css/lightbox.css" rel="stylesheet" type="text/css" >
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header id="header">
-      
-      <a href='index.html' aria-label="retour à la page d'accueil">
-         <img src="assets/images/logo.png" class="logo" alt="Fisheye, galeries de photographes">
-      </a>
-      <div class="lds-grid"></div>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        
-        <!--******    création dynamique de contenu dans cette div par photographer.js *********-->
-      </div>
-     
-      <div class="sort-selection">
-        
-        <span>Trier par &nbsp;</span>
-        
-        <div class="dropdown" role="list">
-          <div class="firstLine" role="listitem">
-            <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')" aria-label="trier par popularité"
-                  onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
-            <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" aria-label="cliquer pour dérouler la liste"
-                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" aria-haspopup="true">▼</div>
-            <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()" aria-label="cliquer pour fermer la liste"
-                onkeydown="if(event.keyCode == 13){event.target.click()}" role="button" aria-haspopup="false">▲</div>    
-          </div>              
-          <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
-                  onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
-          <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
-                  onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Titre</div>
-        </div> 
-          
-      
-      </div>
-      <div class="galerie-section">
-        <!--******    création dynamique de contenu dans cette div par sortGalerie.js   ********-->
-      </div>
-          
-      <div class="stickyDiv" id="stickyDiv"></div>  
-    </main>
+<head>
+  <link href="css/loader.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/photographer.css" rel="stylesheet" type="text/css">
+  <link href="css/modal.css" rel="stylesheet" type="text/css">
+  <link href="css/lightbox.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
-    <!--******************************     Modal Formulaire       ******************************-->
-    <div id="contact_modal">
-      <div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          
-          <img src="assets/icons/xmark.svg" onclick="closeModal()" alt="fermeture du formulaire" tabindex="0"
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header id="header">
+
+    <a href='index.html' aria-label="retour à la page d'accueil">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye, galeries de photographes">
+    </a>
+    <div class="lds-grid"></div>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+
+      <!--******    création dynamique de contenu dans cette div par photographer.js *********-->
+    </div>
+
+    <div class="sort-selection">
+
+      <span>Trier par &nbsp;</span>
+
+      <div class="dropdown" role="list">
+        <div class="firstLine" role="listitem">
+          <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')"
+            aria-label="trier par popularité" onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
+          <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" onfocus="dropDownOpen()"
+            aria-label="cliquer pour dérouler la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
+            role="button" aria-haspopup="true">▼</div>
+          <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()"
+            aria-label="cliquer pour fermer la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
+            role="button" aria-haspopup="false">▲</div>
+        </div>
+        <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
+          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
+        <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
+          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Titre</div>
+      </div>
+
+
+    </div>
+    <div class="galerie-section">
+      <!--******    création dynamique de contenu dans cette div par sortGalerie.js   ********-->
+    </div>
+
+    <div class="stickyDiv" id="stickyDiv"></div>
+  </main>
+
+  <!--******************************     Modal Formulaire       ******************************-->
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+
+        <img src="assets/icons/xmark.svg" onclick="closeModal()" alt="fermeture du formulaire" tabindex="0"
           onkeydown="if(event.keyCode == 13){event.target.click()}">
-        </header>
-        
-				<form id="form" name="contact" aria-label="formulaire de contact"> <!--action & method-->
-          <p class="contactMe"><!--photographer name here--></p>
-					<div class="formData" data-validation-type="name"
-           data-error ="Prénom trop court (2 caractères) ou caractères invalides.">
-						<label for="first">Prénom</label>
-						<input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15" aria-label="prénom" tabindex="0">
-					</div>
+      </header>
 
-          <div class="formData" data-validation-type="name"
-           data-error ="Nom trop court (2 caractères) ou caractères invalides.">
-						<label for="last">Nom</label>
-						<input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40" aria-label="nom" tabindex="0">
-					</div>
+      <form id="form" name="contact" aria-label="formulaire de contact"> <!--action & method-->
+        <p class="contactMe"><!--photographer name here--></p>
+        <div class="formData" data-validation-type="name"
+          data-error="Prénom trop court (2 caractères) ou caractères invalides.">
+          <label for="first">Prénom</label>
+          <input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15"
+            aria-label="prénom" tabindex="0">
+        </div>
 
-          <div class="formData" data-validation-type="email"
-           data-error ="Veuillez entrer une adresse email valide.">
-						<label for="email">Email</label>
-						<input class="text-control lowCase" type="email" id="email" name="email" aria-label="email" tabindex="0">
-					</div>
+        <div class="formData" data-validation-type="name"
+          data-error="Nom trop court (2 caractères) ou caractères invalides.">
+          <label for="last">Nom</label>
+          <input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40" aria-label="nom"
+            tabindex="0">
+        </div>
 
-          <div class="formData" data-validation-type="message"
-           data-error ="Message trop court (10 caractères) ou symboles invalides.">
-						<label for="message">Votre message</label>
-						<input class="text-control textArea" type="text" id="message" name="message" 
-              minlength="10" aria-label="message" placeholder="Votre message ici..." tabindex="0">
-					</div>
+        <div class="formData" data-validation-type="email" data-error="Veuillez entrer une adresse email valide.">
+          <label for="email">Email</label>
+          <input class="text-control lowCase" type="email" id="email" name="email" aria-label="email" tabindex="0">
+        </div>
 
-          <button class="contact_button" aria-label="envoi du formulaire" tabindex="0">Envoyer</button>
-          <label for="btn-close" class="formSuccessMessage" id="formSuccessMessage">Envoi du formulaire, fermeture</label>
-          <input class="btn-close" type="reset" id="btn-close" value="Fermer" onclick="resetThenCloseModal()" tabindex="0">
-				</form>
-      </div>
-		</div>
+        <div class="formData" data-validation-type="message"
+          data-error="Message trop court (10 caractères) ou symboles invalides.">
+          <label for="message">Votre message</label>
+          <input class="text-control textArea" type="text" id="message" name="message" minlength="10"
+            aria-label="message" placeholder="Votre message ici..." tabindex="0">
+        </div>
+
+        <button class="contact_button" aria-label="envoi du formulaire" tabindex="0">Envoyer</button>
+        <label for="btn-close" class="formSuccessMessage" id="formSuccessMessage">Envoi du formulaire, fermeture</label>
+        <input class="btn-close" type="reset" id="btn-close" value="Fermer" onclick="resetThenCloseModal()"
+          tabindex="0">
+      </form>
+    </div>
+  </div>
 
 
-    <!--*******************************     Modal/Lightbox         *****************************-->
-<div id="lightbox-Modal" class="lightbox-Modal">
-  <img src="assets/icons/xmark.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail" id="closeLightbox"
-      onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" alt="fermeture"  class="closeLightbox">
-  <div class="lightbox-content">
+  <!--*******************************     Modal/Lightbox         *****************************-->
+  <div id="lightbox-Modal" class="lightbox-Modal">
+    <img src="assets/icons/xmark.svg" onclick="closeLightbox()" tabindex="0" aria-label="fermeture de la vue détail"
+      id="closeLightbox" onkeydown="if(event.keyCode ==13 || event.keyCode ==27){event.target.click()}" alt="fermeture"
+      class="closeLightbox">
+    <div class="lightbox-content">
 
     </div>
 
     <a class="prev" onclick="plusSlides(-1)" tabindex="0" aria-label="vers la photo précédente"
-        onkeydown="if(event.keyCode == 13){event.target.click()}">◄</a>
+      onkeydown="if(event.keyCode == 13){event.target.click()}">◄</a>
     <a class="next" onclick="plusSlides(1)" tabindex="0" aria-label="vers la photo suivante"
-        onkeydown="if(event.keyCode == 13){event.target.click()}">►</a>
+      onkeydown="if(event.keyCode == 13){event.target.click()}">►</a>
 
-</div>
+  </div>
 
 
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="./scripts/pages/displayGalerie.js"></script>
-    <script src="./scripts/utils/contactForm.js"></script>
-    <script src="./scripts/utils/dropdown.js"></script>
-  </body>
+  <script src="./scripts/factories/factories.js"></script>
+  <script src="./scripts/pages/photographer.js"></script>
+  <script src="./scripts/pages/displayGalerie.js"></script>
+  <script src="./scripts/utils/contactForm.js"></script>
+  <script src="./scripts/utils/dropdown.js"></script>
+</body>
+
 </html>
