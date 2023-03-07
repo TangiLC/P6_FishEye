@@ -37,7 +37,7 @@
         <div class="firstLine" role="listitem">
           <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')"
             aria-label="trier par popularité" onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
-          <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()"
+          <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" onfocus="dropDownOpen()"
             aria-label="cliquer pour dérouler la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
             role="button" aria-haspopup="true">▼</div>
           <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()"

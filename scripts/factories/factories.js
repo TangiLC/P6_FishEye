@@ -6,6 +6,7 @@ function setListOfAttributes (el, attrs) {
   Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]))
 }
 
+//*** fonction pour créer attributs et innertext dans une div affectée à parent **/
 function createDiv (elementName, Attribute_key, elemInnerText, parentTarget) {
   Object.keys(Attribute_key).forEach(key =>
     elementName.setAttribute(key, Attribute_key[key])
@@ -14,7 +15,7 @@ function createDiv (elementName, Attribute_key, elemInnerText, parentTarget) {
   parentTarget.appendChild(elementName)
 }
 
-//***** factory principale de création de l"UserCardDOM ********/
+//***** factory de création de l'UserCardDOM pour la galerie ********/
 
 function getUserCardDOM (dataGal, firstName, slide_Nb) {
   let { id, phId, title, image, video, likes, date, price } = dataGal
@@ -81,9 +82,9 @@ function getUserCardDOM (dataGal, firstName, slide_Nb) {
   return articleGalerie
 }
 
-//***** factory de création de l"UserCardDOM pour lightbox ********/
+//***** factory de création de l'UserCardDOM pour lightbox ********/
 
-function getUserCardDOMLightBox (dataGal, firstName, slide_Nb) {
+function getUserCardDOMLightBox (dataGal, firstName) {
   let title = dataGal.title
   let image = dataGal.image
   let video = dataGal.video

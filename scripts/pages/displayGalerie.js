@@ -62,11 +62,7 @@ function eraseDisplayDataG () {
     const userCardDOM = getUserCardDOM(medium, artistFirstName, slideNb)
     galerieSection.appendChild(userCardDOM)
 
-    const userCardDOMLightBox = getUserCardDOMLightBox(
-      medium,
-      artistFirstName,
-      slideNb
-    )
+    const userCardDOMLightBox = getUserCardDOMLightBox(medium, artistFirstName)
     lightboxGal.appendChild(userCardDOMLightBox)
     slideNb += 1
   })
