@@ -16,11 +16,12 @@ main {
 .dateDiv{
     text-align: right;
     color: black;
-    font-size: 65%;
+    font-size: 90%;
     position: relative;
-    width:60px;
-    top: -2%;
-    left: 40%;
+    width:80px;
+    top: -3%;
+    left: 36%;
+    padding:2px;
     background-color: lightgray;
 }
 
