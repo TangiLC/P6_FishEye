@@ -13,7 +13,7 @@ var attributes = {}
 /*async*/ function displayData (photographers) {
   const photographersSection = document.querySelector('.photographer_section')
 
-  photographers.forEach(photographer => {
+  photographers.forEach((photographer) => {
     const userCardDOM = getIndexCardDOM(photographers,artistNb)
     photographersSection.appendChild(userCardDOM)
     artistNb++
