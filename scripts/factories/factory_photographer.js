@@ -97,8 +97,8 @@ function getUserCardDOMLightBox (dataGal, firstName) {
   return lightboxArticle;
 }
 
-//***** factory de création de l'UserCardDOM pour la page index ********/
-
+//***** factory de création de l'UserCardDOM pour la page index ********
+/*
 function getIndexCardDOM (data, artistNb) {
   const { name, id, city, country, tagline, price, portrait } = data[artistNb];
   const picture = `./assets/photographers/zzportrait/mini_${portrait}`;
@@ -129,4 +129,4 @@ function getIndexCardDOM (data, artistNb) {
   createDiv(tarif, {class:"price"}, (price + '€/jour'), baliseA);
 
   return article;
-}
+}*/
