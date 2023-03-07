@@ -69,7 +69,7 @@ function eraseDisplayDataG () {
   stickyMessage()
 }
 
-// Récupère les datas du photographe choisi et initialise l"affichage
+// Récupère les datas du photographe choisi et initialise l'affichage
 const artist = parseInt(window.location.search.slice(-4))
 console.log(artist)
 
