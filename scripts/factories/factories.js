@@ -13,7 +13,6 @@ function createDiv (elementName, Attribute_key, elemInnerText, parentTarget) {
   )
   elementName.innerText = elemInnerText
   parentTarget.appendChild(elementName)
-  console.log('création de '+elementName)
 }
 
 //***** factory de création de l'UserCardDOM pour la galerie ********/
@@ -33,29 +32,19 @@ function getUserCardDOM (dataGal, firstName, slide_Nb) {
     let contentPath = `./assets/photographers/${artistFirstName}/mini_${image}`
     var videoTitle = ''
     const artistImg = document.createElement('img')
-    let attributes = {
-      src: contentPath,
-      alt: title,
-      tabindex: '0',
-      onclick: `openLightbox();currentSlide(${slide_Nb})`,
-      onkeydown: 'if(event.keyCode == 13){event.target.click()}'
-    }
+    let attributes = {src: contentPath, alt: title, tabindex: '0',
+          onclick: `openLightbox();currentSlide(${slide_Nb})`,
+          onkeydown: 'if(event.keyCode == 13){event.target.click()}'}
     createDiv(artistImg, attributes, '', articleGalerie)
   } else if (dataGal.hasOwnProperty('video')) {
     textDate = date + ' V I D É O ►'
     let contentPath = `./assets/photographers/${artistFirstName}/${video}`
     var videoTitle = '► '
     const artistVideo = document.createElement('video')
-    let attributes = {
-      class: 'galerieVideo',
-      width: '350px',
-      height: '300px',
-      muted: 'true',
-      alt: title,
-      tabindex: '0',
-      onclick: `openLightbox();currentSlide(${slide_Nb})`,
-      onkeydown: 'if(event.keyCode == 13){event.target.click()}'
-    }
+    let attributes = {class: 'galerieVideo', width: '350px', height: '300px',
+          muted: 'true', alt: title, tabindex: '0',
+          onclick: `openLightbox();currentSlide(${slide_Nb})`,
+          onkeydown: 'if(event.keyCode == 13){event.target.click()}'}
     createDiv(artistVideo, attributes, '', articleGalerie)
     const videoSource = document.createElement('source')
     createDiv(videoSource, { src: contentPath }, '', artistVideo)
@@ -71,15 +60,10 @@ function getUserCardDOM (dataGal, firstName, slide_Nb) {
   createDiv(mediaTitle, { class: 'media-title' }, videoTitle + title, titleDiv)
 
   const mediaLikes = document.createElement('button')
-  let attributes = {
-    class: 'mediaLikes',
-    tabindex: '0',
-    onclick: `addOneLike(${id})`,
-    ariaLabel: 'nombre de likes',
-    'title': 'nombre de likes',
-    onkeydown: 'if(event.keyCode == 13){event.target.click()}'
-  }
-  createDiv(mediaLikes, attributes, likes.toString() + '❤', titleDiv)
+  let attributes = {class: 'mediaLikes', tabindex: '0', onclick: `addOneLike(${id})`,
+        ariaLabel: 'nombre de likes', 'title': 'nombre de likes',
+        onkeydown: 'if(event.keyCode == 13){event.target.click()}'}
+  createDiv(mediaLikes, attributes, likes + '❤', titleDiv)                     //toString()
 
   return articleGalerie
 }
@@ -92,34 +76,19 @@ function getUserCardDOMLightBox (dataGal, firstName) {
   let video = dataGal.video
   var artistFirstName = firstName
   const lightboxArticle = document.createElement('div')
-  let attribs = {
-    class: 'mySlides',
-    'aria-label': `galerie de ${artistFirstName}`
-  }
+  let attribs = {class: 'mySlides','aria-label': `galerie de ${artistFirstName}`}
   setListOfAttributes(lightboxArticle, attribs)
 
   if (dataGal.hasOwnProperty('image')) {
     let contentPath = `./assets/photographers/${artistFirstName}/${image}`
     const artistImg = document.createElement('img')
-    let attributes = {
-      src: contentPath,
-      alt: title,
-      class: 'lightbox-img',
-      height: maxHeight * 0.8
-    }
+    let attributes = {src: contentPath, alt: title, class: 'lightbox-img', height: maxHeight*0.8}
     createDiv(artistImg, attributes, '', lightboxArticle)
   } else if (dataGal.hasOwnProperty('video')) {
     let contentPath = `./assets/photographers/${artistFirstName}/${video}`
     const artistVideo = document.createElement('video')
-    let attributes = {
-      width: '95%',
-      height: 'auto',
-      tabindex: '0',
-      controls: 'true',
-      muted: 'true',
-      label: title,
-      class: 'lightbox-img'
-    }
+    let attributes = {width: '95%', height: 'auto', tabindex: '0', controls: 'true',
+          muted: 'true', label: title, class: 'lightbox-img' }
     createDiv(artistVideo, attributes, '', lightboxArticle)
     const videoSource = document.createElement('source')
     createDiv(videoSource, { src: contentPath }, '', artistVideo)
@@ -163,6 +132,5 @@ function getIndexCardDOM (data, artistNb) {
   const tarif = document.createElement('div')
   createDiv(tarif, {class:"price"}, (price + '€/jour'), baliseA)
 
-  
   return article
 }
