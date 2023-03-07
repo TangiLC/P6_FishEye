@@ -30,7 +30,7 @@ function photographerFactory(data) {
         
         for(var j=0;j<9;j++){
             var loaderImg=document.createElement('img');
-            attribAppendDiv(loaderImg, {src: picture}, "", loaderGrid);
+            attribAppendDiv(loaderImg, {src: picture, alt:'mini css anim'}, "", loaderGrid);
         }
 
         const article = document.createElement( 'article' );   
