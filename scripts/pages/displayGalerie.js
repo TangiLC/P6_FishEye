@@ -22,17 +22,18 @@ function stickyMessage () {
 function sortingBy (param) {
   if (param == 'likes') {
     subGalerie.sort((a, b) =>
-      a[param] < b[param] ? 1 : b[param] > a[param] ? -1 : 0
+      a[param] <b[param] ? 1 : b[param] >a[param] ? -1 : 0
     )
   } else {
     subGalerie.sort((a, b) =>
-      a[param] > b[param] ? 1 : b[param] > a[param] ? -1 : 0
+      a[param] >b[param] ? 1 : b[param] >a[param] ? -1 : 0
     )
   }
-  console.log('sorting by ' + param)
   eraseDisplayDataG()
-  slideNb = 1
   displayDataG(subGalerie)
+
+  slideNb = 1
+  console.log('sorting by ' + param)
 }
 
 //***** fonction efface et affiche à nouveau la galerie ***********/

@@ -39,7 +39,7 @@
             aria-label="trier par popularité" onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
           <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" onfocus="dropDownOpen()"
             aria-label="cliquer pour dérouler la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
-            role="button" aria-haspopup="true">▼</div>
+            role="button" aria-haspopup="listbox" aria-expanded>▼</div>
           <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()"
             aria-label="cliquer pour fermer la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
             role="button" aria-haspopup="false">▲</div>
@@ -51,6 +51,8 @@
       </div>
 
 
+      
+       
     </div>
     <div class="galerie-section">
       <!--******    création dynamique de contenu dans cette div par sortGalerie.js   ********-->

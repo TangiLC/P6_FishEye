@@ -13,8 +13,8 @@ function getHeaderCardDOM(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `./assets/photographers/zzportrait/mini_${portrait}`;
     const loaderGrid=document.querySelector('.lds-grid');
-        
-    for(var j=0;j<9;j++){        //création de 9 cases animation css
+    let j;    
+    for(j=0; j<9; j++){        //création de 9 cases animation css
         var loaderImg=document.createElement('img');
         attribAppendDiv(loaderImg, {src: picture, alt:`mini anim ${j}/9`}, "", loaderGrid);
     }

@@ -17,7 +17,7 @@ function createDiv (elementName, Attribute_key, elemInnerText, parentTarget) {
 
 function getIndexCardDOM (data, artistNb) {
     const { name, id, city, country, tagline, price, portrait } = data[artistNb];
-    const picture = `./assets/photographers/zzportrait/mini_${portrait}`;
+    const picture = `./assets/photographers/zzportrait/mini-${portrait}.webp`;
     let path = id + artistNb.toString().padStart(4, '0');
     const photographerpath = `photographer.html?id=${path}`;
     const article = document.createElement('article');
