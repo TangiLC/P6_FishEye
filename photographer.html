@@ -39,10 +39,10 @@
             aria-label="trier par popularité" onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
           <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" onfocus="dropDownOpen()"
             aria-label="cliquer pour dérouler la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
-            role="button" aria-haspopup="listbox" aria-expanded>▼</div>
+            role="button" aria-haspopup="true" aria-expanded="false">▼</div>
           <div class="dropClose" id="dropClose" tabindex="0" onclick="dropDownClose()"
             aria-label="cliquer pour fermer la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
-            role="button" aria-haspopup="false">▲</div>
+            role="button" aria-haspopup="true" aria-expanded="true">▲</div>
         </div>
         <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
           onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
