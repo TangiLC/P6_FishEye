@@ -1,13 +1,3 @@
-/*structure media.json{
-    "id":nb,
-    "photographerId":nb,
-    "title":string,
-    "image":string url,
-   **or "video":string url,
-    "likes":nb,
-    "date":string format yyyy-mm-dd,
-    "price":nb}*/
-
 let artistFirstName = 'Mimi'
 let subGalerie = []
 let artistTotalLikes = 0
@@ -69,7 +59,7 @@ function eraseDisplayDataG () {
   stickyMessage()
 }
 
-// Récupère les datas du photographe choisi et initialise l'affichage
+//****** Récupère les datas du photographe choisi et initialise l'affichage ****/
 const artist = parseInt(window.location.search.slice(-4))
 console.log(artist)
 
@@ -102,10 +92,10 @@ fetch('./data/photographers.json')
 
 //******************** lightbox  ********************************************/
 // Open lightbox
-const nextArrow = document.querySelector('.next')
+const closeFocus=document.querySelector('.closeLightbox')
 function openLightbox () {
   document.getElementById('lightbox-Modal').style.display = 'block'
-  nextArrow.focus({ focusVisible: true })
+  closeFocus.focus({focusVisible:true})
 }
 
 // Close lightbox
@@ -136,6 +126,7 @@ function showSlides (n) {
     slides[i].style.display = 'none'
   }
   slides[slideNb - 1].style.display = 'block'
+  closeFocus.focus({focusVisible:true})
   console.log(slideNb)
 }
 

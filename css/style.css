@@ -13,6 +13,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin-left:80px;
 }
 
 h1 {
@@ -22,7 +23,8 @@ h1 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    width: auto;
+    vertical-align: bottom;
 }
 
 .photographer_section {

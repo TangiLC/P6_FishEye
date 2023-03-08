@@ -79,13 +79,13 @@ function getUserCardDOMLightBox (dataGal, firstName) {
   if (dataGal.hasOwnProperty('image')) {
     let imgContentPath = `./assets/photographers/${artistFirstName}/${image}`;
     const artistImg = document.createElement('img');
-    let attributes = {src: imgContentPath, alt: title, class: 'lightbox-img', height: maxHeight*0.8};
+    let attributes = {src: imgContentPath, alt: title, class: 'lightbox-img', tabindex:'0', height: maxHeight*0.8};
     createDiv(artistImg, attributes, '', lightboxArticle);
   } else if (dataGal.hasOwnProperty('video')) {
     let vidContentPath = `./assets/photographers/${artistFirstName}/${video}`;
     const artistVideo = document.createElement('video');
     let attributes = {width: '95%', height: 'auto', tabindex: '0', controls: 'true',
-          muted: 'true', label: title, class: 'lightbox-img' };
+          muted: 'true', alt: title, class: 'lightbox-img', };
     createDiv(artistVideo, attributes, '', lightboxArticle);
     const videoSource = document.createElement('source');
     createDiv(videoSource, { src: vidContentPath }, '', artistVideo);

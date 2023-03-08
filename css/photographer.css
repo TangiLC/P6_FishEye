@@ -13,6 +13,12 @@ main {
     margin: auto;
 }
 
+header a {
+    color: #901C1C;
+    font-size:300%;
+    text-decoration: none;
+}
+
 .dateDiv{
     text-align: right;
     color: black;
