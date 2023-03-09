@@ -40,6 +40,11 @@ header a {
     border:none;
     transition:.2s;
 }
+.already{
+    font-size:95%;
+    color:red;
+    background-color: lightgrey;}
+
 .mediaLikes:hover .mediaLikes:focus{
     background-color:rgba(0,0,0,0.2);
     font-size:110%;

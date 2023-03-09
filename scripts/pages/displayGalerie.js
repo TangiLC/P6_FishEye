@@ -22,15 +22,15 @@ function stickyMessage () {
 function sortingBy (param) {
   if (param == 'likes') {
     subGalerie.sort((a, b) =>
-      a[param] <b[param] ? 1 : b[param] >a[param] ? -1 : 0
+      a[param] < b[param] ? 1 : b[param] > a[param] ? -1 : 0
     )
   } else {
     subGalerie.sort((a, b) =>
-      a[param] >b[param] ? 1 : b[param] >a[param] ? -1 : 0
+      a[param] > b[param] ? 1 : b[param] > a[param] ? -1 : 0
     )
   }
   eraseDisplayDataG()
-  displayDataG(subGalerie)
+  displayDataG(subGalerie, previousId)
 
   slideNb = 1
   console.log('sorting by ' + param)
@@ -45,12 +45,12 @@ function eraseDisplayDataG () {
   stickDiv.innerHTML = ''
 }
 
-/*async*/ function displayDataG (sub) {
+/*async*/ function displayDataG (sub, previous) {
   const galerieSection = document.querySelector('.galerie-section')
   const lightboxGal = document.querySelector('.lightbox-content')
 
   sub.forEach(medium => {
-    const userCardDOM = getUserCardDOM(medium, artistFirstName, slideNb)
+    const userCardDOM = getUserCardDOM(medium, artistFirstName, slideNb, previous)
     galerieSection.appendChild(userCardDOM)
 
     const userCardDOMLightBox = getUserCardDOMLightBox(medium, artistFirstName)
@@ -84,7 +84,7 @@ fetch('./data/photographers.json')
       }
 
       console.log(subGalerie)
-      displayDataG(subGalerie)
+      displayDataG(subGalerie,previousId)
     })
   })
   .catch(function (err) {
@@ -93,10 +93,10 @@ fetch('./data/photographers.json')
 
 //******************** lightbox  ********************************************/
 // Open lightbox
-const closeFocus=document.querySelector('.closeLightbox')
+const closeFocus = document.querySelector('.closeLightbox')
 function openLightbox () {
   document.getElementById('lightbox-Modal').style.display = 'block'
-  closeFocus.focus({focusVisible:true})
+  closeFocus.focus({ focusVisible: true })
 }
 
 // Close lightbox
@@ -127,7 +127,7 @@ function showSlides (n) {
     slides[i].style.display = 'none'
   }
   slides[slideNb - 1].style.display = 'block'
-  closeFocus.focus({focusVisible:true})
+  closeFocus.focus({ focusVisible: true })
   console.log(slideNb)
 }
 
@@ -146,7 +146,9 @@ function addOneLike (arg) {
     stickyMessage()
     eraseDisplayDataG()
     slideNb = 1
-    displayDataG(subGalerie)
+    displayDataG(subGalerie,previousId)
+    
+
   } else {
     alert('❤ Vous avez déjà voté ❤')
   }

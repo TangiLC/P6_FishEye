@@ -18,7 +18,7 @@ function createDiv(elementName, Attribute_key, elemInnerText, parentTarget) {
 
 //***** factory de création de l'UserCardDOM pour la galerie ********/
 
-function getUserCardDOM(dataGal, firstName, slide_Nb) {
+function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
   let { id, phId, title, image, video, likes, date, price } = dataGal;
   let artistFirstName = firstName;
   const articleGalerie = document.createElement("article");
@@ -68,7 +68,7 @@ function getUserCardDOM(dataGal, firstName, slide_Nb) {
   createDiv(titleDiv, { class: "titleDiv" }, "", articleGalerie);
 
   const mediaTitle = document.createElement("div");
-  createDiv(mediaTitle, { class: "media-title" }, videoTitle + title, titleDiv);
+  createDiv(mediaTitle, { class: "media-title", lang:"en" }, videoTitle + title, titleDiv);
 
   const mediaLikes = document.createElement("button");
   let attributes = {
@@ -79,7 +79,11 @@ function getUserCardDOM(dataGal, firstName, slide_Nb) {
     title: "nombre de likes",
     onkeydown: "if(event.keyCode == 13){event.target.click()}",
   };
+  
   createDiv(mediaLikes, attributes, likes + "❤", titleDiv);
+  if (previous.includes(id)){
+    mediaLikes.setAttribute("class","already");
+    mediaLikes.innerText=likes+"♥+";}
 
   return articleGalerie;
 }
@@ -128,7 +132,7 @@ function getUserCardDOMLightBox(dataGal, firstName) {
   }
 
   const titleDiv = document.createElement("div");
-  createDiv(titleDiv, { class: "titleDiv" }, title, lightboxArticle);
+  createDiv(titleDiv, { class: "titleDiv", lang:"en"}, title, lightboxArticle);
 
   return lightboxArticle;
 }

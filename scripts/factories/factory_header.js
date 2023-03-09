@@ -11,7 +11,7 @@ function attribAppendDiv(elementName, elementAttributes_keys, elementInnerText, 
 
 function getHeaderCardDOM(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
-    const picture = `./assets/photographers/zzportrait/mini_${portrait}`;
+    const picture = `./assets/photographers/zzportrait/mini-${portrait}.webp`;
     const loaderGrid=document.querySelector('.lds-grid');
     let j;    
     for(j=0; j<9; j++){        //création de 9 cases animation css

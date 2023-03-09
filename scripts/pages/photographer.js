@@ -37,8 +37,10 @@ fetch('./data/photographers.json')
 
 function loader(){
         const mainBg=document.getElementById('main');
+        const footerBg=document.getElementById('footer');
         const loaderBg=document.querySelector('.lds-grid');
         mainBg.style.display = "none";
-        setTimeout(function(){loaderBg.style.display="none"; mainBg.style.display = "block";},3000);
+        footerBg.style.display = "none";
+        setTimeout(function(){loaderBg.style.display="none"; mainBg.style.display = "block";footerBg.style.display = "block";},3000);
 }
 loader();

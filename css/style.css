@@ -6,6 +6,15 @@ body {
     margin: auto;
 }
 
+footer{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end;
+    text-align: right;
+    color:#901C1C;
+    font-size:90%;
+    margin-top:40px;
+}
 
 header {
     display: flex;
