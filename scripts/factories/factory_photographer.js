@@ -47,13 +47,9 @@ function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
     console.log(stopMotion);
     let vidContentPath = `./assets/photographers/${artistFirstName}/${stopMotion}`;
     videoTitle = "► ";
-    const artistVideo = document.createElement("div");     //video
+    const artistVideo = document.createElement("div");     
     let attributes = {
-      //src:vidContentPath,
       class: "galerieVideo",
-      //width: "350px",
-      //height: "300px",
-      //muted: "true",
       alt: `Vidéo de ${artistFirstName} nommée ${title}`,
       tabindex: "0",
       onclick: `openLightbox();currentSlide(${slide_Nb})`,
@@ -61,7 +57,11 @@ function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
     };
     createDiv(artistVideo, attributes, "", articleGalerie);
     const videoSource = document.createElement("img");
-    createDiv(videoSource, { src: vidContentPath, width:"350px", height:"250px"}, "", artistVideo);
+    attributes = {
+      src: vidContentPath,
+      alt: `Vidéo de ${artistFirstName} nommée ${title}`
+    };
+    createDiv(videoSource, attributes, "", artistVideo);
   }
 
   const dateDiv = document.createElement("div");
