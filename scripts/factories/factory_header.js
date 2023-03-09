@@ -20,7 +20,7 @@ function getHeaderCardDOM(data) {
     }
 
     const article = document.createElement( 'article' );   
-    setListOfAttribs(article, {class:"galerie-header", ariaLabel:`galerie de ${name}`});
+    setListOfAttribs(article, {class:"galerie-header", ariaLabel:`galerie de ${name}`, tabIndex:"0"});
 
     const leftCol = document.createElement( 'div' );
     attribAppendDiv(leftCol, {class: 'leftCol'}, "", article);

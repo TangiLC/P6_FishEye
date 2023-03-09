@@ -31,12 +31,12 @@
 
     <div class="sort-selection">
 
-      <span>Trier par &nbsp;</span>
+      Trier par &nbsp;
 
       <div class="dropdown" role="list">
         <div class="firstLine" role="listitem">
           <div class="dropVisible" id='sortLikes' tabindex="0" onclick="sortingBy('likes')"
-            aria-label="trier par popularité" onkeydown="if(event.keyCode == 13){event.target.click()}">Popularité</div>
+            onkeydown="if(event.keyCode == 13){event.target.click()}"><span>trier par</span>Popularité</div>
           <div class="dropOpen" id="dropOpen" tabindex="0" onclick="dropDownOpen()" onfocus="dropDownOpen()"
             aria-label="cliquer pour dérouler la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
             role="button" aria-haspopup="true" aria-expanded="false">▼</div>
@@ -44,10 +44,10 @@
             aria-label="cliquer pour fermer la liste" onkeydown="if(event.keyCode == 13){event.target.click()}"
             role="button" aria-haspopup="true" aria-expanded="true">▲</div>
         </div>
-        <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')" aria-label="trier par date"
-          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Date</div>
-        <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')" aria-label="trier par titre"
-          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem">Titre</div>
+        <div class="dropVisible1" id='sortDates' tabindex="0" onclick="sortingBy('date')"
+          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem"><span>trier par</span>Date</div>
+        <div class="dropVisible2" id='sortTitle' tabindex="0" onclick="sortingBy('title')"
+          onkeydown="if(event.keyCode == 13){event.target.click()}" role="listitem"><span>trier par</span>Titre</div>
       </div>
 
 

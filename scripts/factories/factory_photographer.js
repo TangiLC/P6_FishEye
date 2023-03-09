@@ -42,23 +42,26 @@ function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
     };
     createDiv(artistImg, attributes, "", articleGalerie);
   } else if (dataGal.hasOwnProperty("video")) {
-    textDate = date + " V I D É O ►";
-    let vidContentPath = `./assets/photographers/${artistFirstName}/${video}`;
+    textDate ="VIDÉO► "+ date ;
+    let stopMotion = video.substring(0,(video.length-3))+'jpg';
+    console.log(stopMotion);
+    let vidContentPath = `./assets/photographers/${artistFirstName}/${stopMotion}`;
     videoTitle = "► ";
-    const artistVideo = document.createElement("video");
+    const artistVideo = document.createElement("div");     //video
     let attributes = {
+      //src:vidContentPath,
       class: "galerieVideo",
-      width: "350px",
-      height: "300px",
-      muted: "true",
+      //width: "350px",
+      //height: "300px",
+      //muted: "true",
       alt: `Vidéo de ${artistFirstName} nommée ${title}`,
       tabindex: "0",
       onclick: `openLightbox();currentSlide(${slide_Nb})`,
       onkeydown: "if(event.keyCode == 13){event.target.click()}",
     };
     createDiv(artistVideo, attributes, "", articleGalerie);
-    const videoSource = document.createElement("source");
-    createDiv(videoSource, { src: vidContentPath }, "", artistVideo);
+    const videoSource = document.createElement("img");
+    createDiv(videoSource, { src: vidContentPath, width:"350px", height:"250px"}, "", artistVideo);
   }
 
   const dateDiv = document.createElement("div");

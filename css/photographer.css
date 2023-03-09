@@ -24,9 +24,8 @@ header a {
     color: black;
     font-size: 90%;
     position: relative;
-    width:80px;
+    min-width:80px;
     top: -3%;
-    left: 36%;
     padding:2px;
     background-color: lightgray;
 }
@@ -79,10 +78,6 @@ header a {
     border-radius: 5px;
     border:2px solid #911D1D;
     cursor: pointer;
-}
-.galerieVideo{
-    background-image: url("../assets/images/Film_strip.png");
-    border: 2px solid white;
 }
 
 .contact_button:hover, .contact_button:focus{
@@ -280,6 +275,9 @@ form textArea {
     border-top: 1px solid white;
     padding:10px;
 }
+.dropVisible span, .dropVisible1 span, .dropVisible2 span{
+    font-size:0%;
+}
 
 .dropOpen{
     display:block;
@@ -334,6 +332,22 @@ form textArea {
     border-radius: 2px;
     border : 2px solid white;
 }
+.galerie-section .galerieVideo{
+    background-image: url("../assets/images/Film_strip.png"); 
+    height: 300px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;    
+    
+}
+
+.galerie-section .galerieVideo img{
+    height: 200px;
+    width:344px;
+    border: 3px solid black;
+    object-fit: cover;
+}
+
 
 .galerie-section .titleDiv {
     width:99%;
