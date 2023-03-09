@@ -58,7 +58,7 @@ function closeModal () {
   main.style.display = 'block'
   footer.style.display = 'block'
   header.style.display = 'block'
-  modalBtn.focus({ focusVisible: true })
+  
 }
 
 function resetThenCloseModal () {
@@ -85,6 +85,7 @@ function closeValidModal () {
     '.'
   closeModal()
   displayModal()
+  closeBtn.focus({ focusVisible: true })
 }
 
 // Regex pour les tests input
@@ -107,8 +108,10 @@ formDataToValidate.forEach(elem => {
         value: e.target.value,
         elem
       })
-      elem.setAttribute('data-error-visible', !isValid)
+      elem.setAttribute('data-error-visible', !isValid);
+
     })
+      
   })
 })
 
@@ -120,7 +123,9 @@ function validateWholeForm () {
         value: input.value,
         elem
       })
-      elem.setAttribute('data-error-visible', !isValid)
+      elem.setAttribute('data-error-visible', !isValid);
+      if(elem.getAttribute('data-error-visible')=='true'){
+        elem.firstElementChild.nextElementSibling.focus({focusVisible:true})}
     })
   })
 

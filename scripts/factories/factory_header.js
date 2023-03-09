@@ -16,7 +16,7 @@ function getHeaderCardDOM(data) {
     let j;    
     for(j=0; j<9; j++){        //création de 9 cases animation css
         var loaderImg=document.createElement('img');
-        attribAppendDiv(loaderImg, {src: picture, alt:`mini anim ${j}/9`}, "", loaderGrid);
+        attribAppendDiv(loaderImg, {src: picture, alt:""}, "", loaderGrid);
     }
 
     const article = document.createElement( 'article' );   

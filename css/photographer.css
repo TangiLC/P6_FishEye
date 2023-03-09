@@ -108,6 +108,7 @@ header a {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-left:0px;
 }
 
 .modal header img {

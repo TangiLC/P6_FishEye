@@ -42,6 +42,7 @@ function loader(){
         mainBg.style.display = "none";
         footerBg.style.display = "none";
         setTimeout(function(){loaderBg.style.display="none";
+            loaderBg.style.visibility="hidden";
             mainBg.style.display = "block";
             footerBg.style.display = "block";},3000);
 }
