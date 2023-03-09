@@ -1,22 +1,14 @@
-/*structure photographers.json{
-  "name": string,
-  "id": nb,
-  "city": string,
-  "country": string,
-  "tagline": string,
-  "price": nb,
-  "portrait": string}*/
+
 let artistNb = 0
-var attributes = {}
 
 
 /*async*/ function displayData (photographers) {
   const photographersSection = document.querySelector('.photographer_section')
 
-  photographers.forEach((photographer) => {
+  photographers.forEach((elem) => {
     const userCardDOM = getIndexCardDOM(photographers,artistNb)
     photographersSection.appendChild(userCardDOM)
-    artistNb++
+    artistNb+=1
   })
 }
 

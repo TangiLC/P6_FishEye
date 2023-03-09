@@ -41,6 +41,8 @@ function loader(){
         const loaderBg=document.querySelector('.lds-grid');
         mainBg.style.display = "none";
         footerBg.style.display = "none";
-        setTimeout(function(){loaderBg.style.display="none"; mainBg.style.display = "block";footerBg.style.display = "block";},3000);
+        setTimeout(function(){loaderBg.style.display="none";
+            mainBg.style.display = "block";
+            footerBg.style.display = "block";},3000);
 }
 loader();

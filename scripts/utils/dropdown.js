@@ -1,4 +1,3 @@
-//-----------------------dropdown menu sort---------------------------------
 
 const dropOpen = document.querySelector('.dropOpen');
 const dropClose = document.querySelector('.dropClose');
@@ -26,26 +25,3 @@ function dropDownOpen () {
   dropFocus.focus();
 }
 
-/*['onmouseover', 'click'].forEach(function (event) {
-  dropOpen.addEventListener(event, dropDownOpen())
-})
-/*dropOpen.addEventListener('keydown', function () {
-  if (KeyboardEvent.code === 'Enter' || KeyboardEvent.code === 'ArrowDown') {
-    dropDownOpen()
-  }
-})
-
-['onmouseover', 'click'].forEach(function (event) {
-  dropClose.addEventListener(event, dropDownClose())
-})
-/*dropClose.addEventListener('keydown', function () {
-  if (KeyboardEvent.code === 'Enter' || KeyboardEvent.code === 'ArrowUp') {
-    dropDownClose()
-  }
-})
-dropTotal.addEventListener('onmouseout', dropDownClose())
-dropTotal.addEventListener('keydown', function () {
-  if (KeyboardEvent.code === 'Escape' || KeyboardEvent.code === 'ArrowUp') {
-    dropDownClose()
-  }
-})*/

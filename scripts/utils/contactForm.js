@@ -1,5 +1,6 @@
 // DOM Elements
 const main = document.getElementById('main')
+const footer = document.getElementById('footer')
 const header = document.getElementById('header')
 const modal = document.getElementById('contact_modal')
 const toHide = document.querySelectorAll('.toHide')
@@ -47,14 +48,17 @@ document.addEventListener('keydown', function (e) {
 function displayModal () {
   modal.style.display = 'block'
   main.style.display = 'none'
-  header.style.opacity = '.2'
-  firstFocusableElement.focus()
+  footer.style.display = 'none'
+  header.style.display = 'none'
+  firstFocusableElement.focus({ focusVisible: true })
 }
 
 function closeModal () {
   modal.style.display = 'none'
   main.style.display = 'block'
-  header.style.opacity = '1'
+  footer.style.display = 'block'
+  header.style.display = 'block'
+  modalBtn.focus({ focusVisible: true })
 }
 
 function resetThenCloseModal () {
