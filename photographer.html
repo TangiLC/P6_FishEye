@@ -73,30 +73,36 @@
 
       <form id="form" name="contact" aria-label="formulaire de contact"> <!--action & method-->
         <p class="contactMe"><!--photographer name here--></p>
-        <div class="formData" data-validation-type="name"
+        <div class="formData" data-validation-type="name" 
           data-error="Prénom trop court (2 caractères) ou caractères invalides.">
-          <label for="first" >Prénom</label>
+          <label for="first">Prénom</label>
           <input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15"
-            aria-label="prénom" tabindex="0">
+            aria-label="prénom" tabindex="0" aria-errormessage="erreur1">
+            <span id="erreur1" class="hiddenMessage">Prénom trop court (2 caractères) ou caractères invalides.</span>
         </div>
 
-        <div class="formData" data-validation-type="name"
+        <div class="formData" data-validation-type="name" 
           data-error="Nom trop court (2 caractères) ou caractères invalides.">
           <label for="last" >Nom</label>
           <input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40" aria-label="nom"
-            tabindex="0">
+            tabindex="0" aria-errormessage="erreur2">
+            <span id="erreur2" class="hiddenMessage">Nom trop court ou caractères invalides.</span>
         </div>
 
-        <div class="formData" data-validation-type="email" data-error="Veuillez entrer une adresse email valide.">
+        <div class="formData" data-validation-type="email"
+          data-error="Veuillez entrer une adresse email valide.">
           <label for="email" >Email</label>
-          <input class="text-control lowCase" type="email" id="email" name="email" aria-label="email" tabindex="0">
+          <input class="text-control lowCase" type="email" id="email" name="email" aria-label="email" 
+          tabindex="0"  aria-errormessage="erreur3">
+          <span id="erreur3" class="hiddenMessage">Veuillez entrer une adresse valide</span>
         </div>
 
-        <div class="formData" data-validation-type="message"
-          data-error="Message trop court (10 caractères) ou symboles invalides.">
+        <div class="formData" data-validation-type="message"  aria-errormessage="erreur4"
+          data-error="Message trop court (10 caractères) ou symboles invalides">
           <label for="message" >Votre message</label>
           <input class="text-control textArea" type="text" id="message" name="message" minlength="10"
-            aria-label="message" placeholder="Votre message ici..." tabindex="0">
+            aria-errormessage="erreur4" aria-label="message" placeholder="Votre message ici..." tabindex="0">
+            <span id="erreur4" class="hiddenMessage">Message trop court (10 caractères) ou symboles invalides</span>
         </div>
 
         <button class="contact_button" aria-label="envoi du formulaire" tabindex="0">Envoyer</button>

@@ -124,6 +124,7 @@ function validateWholeForm () {
         elem
       })
       elem.setAttribute('data-error-visible', !isValid);
+      elem.firstElementChild.nextElementSibling.setAttribute('aria-invalid',!isValid);
       if(elem.getAttribute('data-error-visible')=='true'){
         elem.firstElementChild.nextElementSibling.focus({focusVisible:true})}
     })

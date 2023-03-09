@@ -91,3 +91,14 @@ form .textArea {
     padding: 12px 82px;
     border: 0;
   }
+
+  .hiddenMessage {
+    visibility:hidden;
+    font-size:1%;
+  }
+
+  .formData[data-error-visible="true"] .hiddenMessage {
+    visibility:visible;
+    margin-top:-1px;
+  }
+ 
