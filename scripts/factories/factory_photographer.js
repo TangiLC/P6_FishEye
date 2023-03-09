@@ -83,7 +83,7 @@ function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
   createDiv(mediaLikes, attributes, likes + "❤", titleDiv);
   if (previous.includes(id)){
     mediaLikes.setAttribute("class","already");
-    mediaLikes.innerText=likes+"♥+";}
+    mediaLikes.innerText="♥"+likes+"^";}
 
   return articleGalerie;
 }

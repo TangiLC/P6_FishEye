@@ -42,8 +42,11 @@ header a {
 }
 .already{
     font-size:95%;
-    color:red;
-    background-color: lightgrey;}
+    color:#F2F2F2;
+    font-weight:800;
+    background-color: #901C1C;
+    padding:2px;
+}
 
 .mediaLikes:hover .mediaLikes:focus{
     background-color:rgba(0,0,0,0.2);
