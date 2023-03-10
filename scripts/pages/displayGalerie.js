@@ -31,9 +31,7 @@ function sortingBy (param) {
   }
   eraseDisplayDataG()
   displayDataG(subGalerie, previousId)
-
   slideNb = 1
-  console.log('sorting by ' + param)
 }
 
 //***** fonction efface et affiche à nouveau la galerie ***********/
@@ -62,7 +60,6 @@ function eraseDisplayDataG () {
 
 //****** Récupère les datas du photographe choisi et initialise l'affichage ****/
 const artist = parseInt(window.location.search.slice(-4))
-console.log(artist)
 
 fetch('./data/photographers.json')
   .then(function (responseGal) {
@@ -129,14 +126,13 @@ function showSlides (n) {
   }
   slides[slideNb - 1].style.display = 'block'
   closeFocus.focus({ focusVisible: true })
-  console.log(slideNb)
 }
 
 arrowListen.onkeydown=function(event){
-  switch (event.keyCode){
-    case 37 : plusSlides(-1); console.log('left'); break;
-    case 39 : plusSlides(1); console.log('right'); break;
-    case 27 : closeLightbox(); break;
+  switch (event.code){
+    case 'ArrowLeft' : plusSlides(-1); break;
+    case 'ArrowRight' : plusSlides(1); break;
+    case 'Escape' : closeLightbox(); break;
   }
 }
 
@@ -146,7 +142,6 @@ function addOneLike (arg) {
     for (let i = 0; i < subGalerie.length; i++) {
       if (subGalerie[i].id == arg) {
         subGalerie[i].likes += 1
-        console.log('+1 like /' + (subGalerie[i].likes - 1) + artistTotalLikes)
         previousId.push(arg)
         console.log(previousId)
       }
