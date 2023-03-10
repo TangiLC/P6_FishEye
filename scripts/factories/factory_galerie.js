@@ -2,7 +2,6 @@
 let textDate = "";
 let videoTitle = "";
 
-
 //***** factory de création de l'UserCardDOM pour la galerie ********/
 
 function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
