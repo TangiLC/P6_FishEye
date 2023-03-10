@@ -94,6 +94,7 @@ fetch('./data/photographers.json')
 //******************** lightbox  ********************************************/
 // Open lightbox
 const closeFocus = document.querySelector('.closeLightbox')
+const arrowListen=document.querySelector('.lightbox-Modal');
 function openLightbox () {
   document.getElementById('lightbox-Modal').style.display = 'block'
   closeFocus.focus({ focusVisible: true })
@@ -129,6 +130,14 @@ function showSlides (n) {
   slides[slideNb - 1].style.display = 'block'
   closeFocus.focus({ focusVisible: true })
   console.log(slideNb)
+}
+
+arrowListen.onkeydown=function(event){
+  switch (event.keyCode){
+    case 37 : plusSlides(-1); console.log('left'); break;
+    case 39 : plusSlides(1); console.log('right'); break;
+    case 27 : closeLightbox(); break;
+  }
 }
 
 //********************* ajout de likes **********************************/

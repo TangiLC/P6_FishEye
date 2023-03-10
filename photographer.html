@@ -124,9 +124,9 @@
     </div>
 
     <a class="prev" onclick="plusSlides(-1)" tabindex="0" aria-label="vers la photo précédente"
-      onkeydown="if(event.keyCode == 13){event.target.click()}">◄</a>
+      onkeydown="if(event.keyCode == 13 || event.keyCode == 37){event.target.click()}">◄</a>
     <a class="next" onclick="plusSlides(1)" tabindex="0" aria-label="vers la photo suivante"
-      onkeydown="if(event.keyCode == 13){event.target.click()}">►</a>
+      onkeydown="if(event.keyCode == 13 || event.keyCode == 39){event.target.click()}">►</a>
 
   </div>
 
