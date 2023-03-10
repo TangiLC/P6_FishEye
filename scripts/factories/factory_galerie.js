@@ -30,7 +30,6 @@ function getUserCardDOM(dataGal, firstName, slide_Nb, previous) {
   } else if (dataGal.hasOwnProperty("video")) {
     textDate ="VIDÉO► "+ date ;
     let stopMotion = video.substring(0,(video.length-3))+'jpg';
-    console.log(stopMotion);
     let vidContentPath = `./assets/photographers/${artistFirstName}/${stopMotion}`;
     videoTitle = "► ";
     const artistVideo = document.createElement("div");     
