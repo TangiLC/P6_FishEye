@@ -21,8 +21,7 @@ function stickyMessage () {
 //***** fonction de tri de l"array d"objet selon key **************/
 function sortingBy (param) {
   if (param == 'likes') {
-    subGalerie.sort((a, b) =>
-      a[param] < b[param] ? 1 : b[param] > a[param] ? -1 : 0
+    subGalerie.sort(function(a,b){return(b[param] - a[param])} 
     )
   } else {
     subGalerie.sort((a, b) =>
