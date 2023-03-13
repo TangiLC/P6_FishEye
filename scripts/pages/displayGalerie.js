@@ -4,6 +4,8 @@ let artistTotalLikes = 0
 let artistTarif = 0
 let slideNb = 1
 let previousId = [] //liste des id des likes précédents pour interdire de like x2
+const galerieSection = document.querySelector('.galerie-section')
+  const lightboxGal = document.querySelector('.lightbox-content')
 
 const stickDiv = document.querySelector('.stickyDiv')
 
@@ -35,16 +37,13 @@ function sortingBy (param) {
 
 //***** fonction efface et affiche à nouveau la galerie ***********/
 function eraseDisplayDataG () {
-  const galerieSection = document.querySelector('.galerie-section')
-  const lightboxGal = document.querySelector('.lightbox-content')
   galerieSection.innerHTML = ''
   lightboxGal.innerHTML = ''
   stickDiv.innerHTML = ''
 }
 
 /*async*/ function displayDataG (sub, previous) {
-  const galerieSection = document.querySelector('.galerie-section')
-  const lightboxGal = document.querySelector('.lightbox-content')
+  
 
   sub.forEach(medium => {
     const userCardDOM = getUserCardDOM(medium, artistFirstName, slideNb, previous)
