@@ -135,6 +135,14 @@ arrowListen.onkeydown=function(event){
 }
 
 //********************* ajout de likes **********************************/
+function resetLikeDisplay(moreLess){
+    artistTotalLikes += moreLess
+    stickyMessage()
+    eraseDisplayDataG()
+    slideNb = 1
+    displayDataG(subGalerie,previousId)
+}
+
 function addOneLike (arg) {
   if (!previousId.includes(arg)) {
     for (let i = 0; i < subGalerie.length; i++) {
@@ -144,14 +152,20 @@ function addOneLike (arg) {
         console.log(previousId)
       }
     }
-    artistTotalLikes += 1
-    stickyMessage()
-    eraseDisplayDataG()
-    slideNb = 1
-    displayDataG(subGalerie,previousId)
+    resetLikeDisplay(+1)
     
 
   } else {
-    alert('❤ Vous avez déjà voté ❤')
+    let index=previousId.indexOf(arg)
+    if (index>-1) {
+       previousId.splice(index,1)
+    }
+    for (let i = 0; i < subGalerie.length; i++) {
+      if (subGalerie[i].id == arg) {
+        subGalerie[i].likes -= 1
+      }
+    }
+    resetLikeDisplay(-1)
+       
   }
 }
